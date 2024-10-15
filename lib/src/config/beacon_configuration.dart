@@ -6,4 +6,6 @@ class BeaconConfiguration {
       : _beaconRepository = beaconRepository ?? BeaconRepositoryImpl.instance;
 
   final BeaconRepository _beaconRepository;
+
+  BeaconRepository get beaconRepository => _beaconRepository;
 }

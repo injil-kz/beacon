@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:beacon/src/domain/models/http_request.dart';
 import 'package:beacon/src/domain/repository/beacon_repository.dart';
-import 'package:beacon/src/presentation/controllers/beacon_http_requests_state.dart';
 
 class BeaconHttpRequestsController {
   const BeaconHttpRequestsController({
@@ -14,7 +13,7 @@ class BeaconHttpRequestsController {
   final StreamController<List<HttpRequest>> _controller;
   final BeaconRepository _beaconRepository;
 
-  StreamController<List<HttpRequest>> get controller => _controller;
+  Stream<List<HttpRequest>> get stream => _controller.stream;
 
   void loadData() {
     _beaconRepository.listenHttpRequests().listen((event) {
