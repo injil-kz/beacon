@@ -1,10 +1,11 @@
 name: beacon
-description: "A new Flutter project."
+description: A Very Good Project created by Very Good CLI.
+version: 0.1.0+1
 
-version: 1.0.0+1
 
 environment:
-  sdk: ^3.5.3
+  sdk: ^3.4.0
+  flutter: ^3.22.0
 
 dependencies:
   flutter:
@@ -13,6 +14,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mocktail: ^1.0.4
+  very_good_analysis: ^6.0.0
   flutter_lints: 4.0.0
 
 
