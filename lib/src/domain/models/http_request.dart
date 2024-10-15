@@ -1,6 +1,7 @@
 sealed class HttpRequest {
   const HttpRequest(
     this.path, {
+    required this.timestampInMilliseconds,
     required this.body,
     required this.query,
     required this.response,
@@ -10,12 +11,13 @@ sealed class HttpRequest {
   });
 
   final String path;
-  final Map<String,dynamic>? response;
+  final Map<String, dynamic>? response;
   final double? connectionTimeout;
   final double? receiveTimeout;
   final Map<String, dynamic>? headers;
   final Map<String, dynamic>? body;
   final Map<String, dynamic>? query;
+  final double? timestampInMilliseconds;
 
   String get requestInCurl;
 
@@ -34,13 +36,16 @@ sealed class HttpRequest {
 }
 
 final class HttpRequestGet extends HttpRequest {
-  const HttpRequestGet(super.path,
-      {required super.response,
-      required super.connectionTimeout,
-      required super.receiveTimeout,
-      required super.headers,
-      required super.body,
-      required super.query});
+  const HttpRequestGet(
+    super.path, {
+    required super.response,
+    required super.connectionTimeout,
+    required super.receiveTimeout,
+    required super.headers,
+    required super.body,
+    required super.query,
+    required super.timestampInMilliseconds,
+  });
 
   @override
   String get requestInCurl => 'GET';
@@ -55,6 +60,7 @@ final class HttpRequestPost extends HttpRequest {
     required super.headers,
     required super.body,
     required super.query,
+    required super.timestampInMilliseconds,
   });
 
   @override
@@ -70,6 +76,7 @@ final class HttpRequestPut extends HttpRequest {
     required super.headers,
     required super.body,
     required super.query,
+    required super.timestampInMilliseconds,
   });
 
   @override
@@ -85,6 +92,7 @@ final class HttpRequestDelete extends HttpRequest {
     required super.headers,
     required super.body,
     required super.query,
+    required super.timestampInMilliseconds,
   });
 
   @override
@@ -100,6 +108,7 @@ final class HttpRequestPatch extends HttpRequest {
     required super.headers,
     required super.body,
     required super.query,
+    required super.timestampInMilliseconds,
   });
 
   @override

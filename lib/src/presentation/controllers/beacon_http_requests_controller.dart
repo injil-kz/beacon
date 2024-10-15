@@ -16,6 +16,13 @@ class BeaconHttpRequestsController {
   final StreamController<BeaconHttpRequestsState> _controller;
   final BeaconRepository _beaconRepository;
 
+  void loadInitialData() {
+
+  }
+
+  void loadNextPage() {
+
+  }
 
   void addState(BeaconHttpRequestsState state) {
     if (_controller.isClosed) {
