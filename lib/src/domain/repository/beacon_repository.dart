@@ -1,7 +1,7 @@
 import 'package:beacon/src/domain/models/http_request.dart';
 
 abstract interface class BeaconRepository {
-  Future<List<HttpRequest>> fetchHttpRequests();
+  Stream<List<HttpRequest>> listenHttpRequests();
 
-  Future<void> saveHttpRequest(HttpRequest request);
+  Future<void> addHttpRequestEvent(HttpRequest request);
 }

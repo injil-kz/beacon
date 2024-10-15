@@ -19,18 +19,18 @@ sealed class HttpRequest {
   final Map<String, dynamic>? query;
   final double? timestampInMilliseconds;
 
-  String get requestInCurl;
+  String get _requestInCurl;
 
-  String get pathWithQueryParameters => '$path${query ?? ''}';
+  String get _pathWithQueryParameters => '$path$_queryInRaw';
 
-  String get queryInRaw => query.toString();
+  String get _queryInRaw => query.toString();
 
   String toCurl() {
     return '''
-      curl -X $requestInCurl
+      curl -X $_requestInCurl
       ${(headers ?? {}).isNotEmpty ? '-H $headers' : ''} 
       ${(body ?? {}).isNotEmpty ? '-d $body' : ''}
-      $pathWithQueryParameters
+      $_pathWithQueryParameters
     ''';
   }
 }
@@ -48,7 +48,7 @@ final class HttpRequestGet extends HttpRequest {
   });
 
   @override
-  String get requestInCurl => 'GET';
+  String get _requestInCurl => 'GET';
 }
 
 final class HttpRequestPost extends HttpRequest {
@@ -64,7 +64,7 @@ final class HttpRequestPost extends HttpRequest {
   });
 
   @override
-  String get requestInCurl => 'POST';
+  String get _requestInCurl => 'POST';
 }
 
 final class HttpRequestPut extends HttpRequest {
@@ -80,7 +80,7 @@ final class HttpRequestPut extends HttpRequest {
   });
 
   @override
-  String get requestInCurl => 'PUT';
+  String get _requestInCurl => 'PUT';
 }
 
 final class HttpRequestDelete extends HttpRequest {
@@ -96,7 +96,7 @@ final class HttpRequestDelete extends HttpRequest {
   });
 
   @override
-  String get requestInCurl => 'DELETE';
+  String get _requestInCurl => 'DELETE';
 }
 
 final class HttpRequestPatch extends HttpRequest {
@@ -112,5 +112,5 @@ final class HttpRequestPatch extends HttpRequest {
   });
 
   @override
-  String get requestInCurl => 'PATCH';
+  String get _requestInCurl => 'PATCH';
 }

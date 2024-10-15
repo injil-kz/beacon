@@ -7,6 +7,14 @@ class BeaconInterceptor {
   final BeaconRepository _beaconRepository;
 
   Future<void> onRequest(HttpRequest httpRequest) async {
-    _beaconRepository.saveHttpRequest(httpRequest);
+    _beaconRepository.addHttpRequestEvent(httpRequest);
+  }
+
+  Future<void> onResponse(HttpRequest httpRequest) async {
+    _beaconRepository.addHttpRequestEvent(httpRequest);
+  }
+
+  Future<void> onError(HttpRequest httpRequest) async {
+    _beaconRepository.addHttpRequestEvent(httpRequest);
   }
 }
