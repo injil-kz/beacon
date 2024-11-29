@@ -1,11 +1,20 @@
-import 'package:beacon/src/data/repository/beacon_repository_impl.dart';
+import 'package:beacon/src/data/repository/in_memory_beacon_repository.dart';
 import 'package:beacon/src/domain/repository/beacon_repository.dart';
 
+/// A configuration class that provides access to beacon-related data and operations.
 class BeaconConfiguration {
-  BeaconConfiguration({BeaconRepository? beaconRepository})
-      : _beaconRepository = beaconRepository ?? BeaconRepositoryImpl.instance;
+  /// A factory constructor that returns the singleton instance of the `BeaconConfiguration` class.
+  factory BeaconConfiguration() {
+    return _instance;
+  }
+  BeaconConfiguration._privateConstructor({
+    required this.beaconRepository,
+  });
 
-  final BeaconRepository _beaconRepository;
+  static final BeaconConfiguration _instance = BeaconConfiguration._privateConstructor(
+    beaconRepository: InMemoryBeaconRepository(),
+  );
 
-  BeaconRepository get beaconRepository => _beaconRepository;
+  /// A repository that provides access to beacon-related data and operations.
+  final BeaconRepository beaconRepository;
 }
