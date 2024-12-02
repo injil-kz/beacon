@@ -16,8 +16,8 @@ class BeaconHttpCall {
   const BeaconHttpCall({
     required this.xRequestId,
     required this.request,
-    required this.response,
-    required this.error,
+    this.response,
+    this.error,
   });
 
   /// The unique identifier for the HTTP request.
@@ -33,10 +33,24 @@ class BeaconHttpCall {
   /// The HTTP response details.
   ///
   /// This includes information such as the status code, headers, and body of the response.
-  final BeaconHttpResponse response;
+  final BeaconHttpResponse? response;
 
   /// The HTTP error details, if any.
   ///
   /// This includes information about any errors that occurred during the HTTP request or response.
-  final BeaconHttpError error;
+  final BeaconHttpError? error;
+
+  /// Creates a copy of this `BeaconHttpCall` with the specified properties.
+  BeaconHttpCall copyWith({
+    BeaconHttpRequest? newRequest,
+    BeaconHttpResponse? newResponse,
+    BeaconHttpError? newError,
+  }) {
+    return BeaconHttpCall(
+      xRequestId: xRequestId,
+      request: newRequest ?? request,
+      response: newResponse,
+      error: newError,
+    );
+  }
 }
