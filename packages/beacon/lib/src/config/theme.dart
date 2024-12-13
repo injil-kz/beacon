@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 const _primaryColor = Color(0xFFFF8A0E);
@@ -9,6 +10,18 @@ const _inputTextStyle = TextStyle(
   fontSize: 21,
   fontWeight: FontWeight.w400,
 );
+
+CupertinoThemeData get injilCupertinoTheme => const CupertinoThemeData(
+      brightness: Brightness.dark,
+      primaryColor: _primaryColor,
+      scaffoldBackgroundColor: _backgroundColor,
+      textTheme: CupertinoTextThemeData(
+        textStyle: TextStyle(
+          fontSize: 21,
+          fontWeight: FontWeight.w400,
+        ),
+      ),
+    );
 
 ThemeData get injilTheme => ThemeData(
       useMaterial3: true,

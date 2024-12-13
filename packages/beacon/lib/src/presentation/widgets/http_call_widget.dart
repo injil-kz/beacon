@@ -1,15 +1,16 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:beacon/beacon.dart';
 import 'package:beacon/src/presentation/call_details_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HttpCallWidget extends StatelessWidget {
-  final BeaconHttpCall httpCall;
-
   const HttpCallWidget({
-    super.key,
     required this.httpCall,
+    super.key,
   });
+  final BeaconHttpCall httpCall;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class HttpCallWidget extends StatelessWidget {
     return ListTile(
       onTap: () {
         Navigator.of(context).push(
-          CupertinoPageRoute(
+          CupertinoPageRoute<void>(
             builder: (context) => CallDetailsScreen(
               httpCall: httpCall,
             ),

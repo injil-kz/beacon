@@ -1,7 +1,7 @@
 name: beacon_dio_adapter
-description: "A new Flutter package project."
+description: "Dio Adapter for Beacon"
 version: 0.0.1
-homepage:
+homepage: https://injil.kz
 
 environment:
   sdk: ^3.5.4

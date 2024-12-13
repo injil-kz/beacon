@@ -1,6 +1,9 @@
 import 'package:beacon/beacon.dart';
 import 'package:beacon/src/config/theme.dart';
+import 'package:beacon/src/presentation/widgets/injil_theme_wrapper.dart';
 import 'package:beacon/src/presentation/widgets/request_view.dart';
+import 'package:beacon/src/presentation/widgets/response_view.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CallDetailsScreen extends StatefulWidget {
@@ -17,35 +20,50 @@ class CallDetailsScreen extends StatefulWidget {
 class _CallDetailsScreenState extends State<CallDetailsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: injilTheme,
-      child: DefaultTabController(
-        length: 4,
-        child: Scaffold(
-          appBar: AppBar(
-            title: const Text('Call Details'),
-            bottom: const TabBar(
-              tabs: [
-                Tab(text: 'Request'),
-                Tab(text: 'Response'),
-                Tab(text: 'Cookie'),
-                Tab(text: 'Error'),
-              ],
+    return InjThemeWrapper(
+      child: CupertinoTabScaffold(
+        tabBar: CupertinoTabBar(
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.arrow_upward_outlined),
+              label: 'Request',
             ),
-          ),
-          body: TabBarView(
-            children: [
-              Center(
+            BottomNavigationBarItem(
+              icon: Icon(Icons.arrow_downward_outlined),
+              label: 'Response',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.error_outline),
+              label: 'Error',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.cookie),
+              label: 'Cookies',
+            ),
+          ],
+        ),
+        tabBuilder: (context, index) {
+          switch (index) {
+            case 0:
+              return Material(
                 child: RequestView(
                   httpCall: widget.httpCall,
                 ),
-              ),
-              const Center(child: Text('Response View')),
-              const Center(child: Text('Cookie View')),
-              const Center(child: Text('Error View')),
-            ],
-          ),
-        ),
+              );
+            case 1:
+              return Material(
+                child: ResponseView(
+                  httpCall: widget.httpCall,
+                ),
+              );
+            case 2:
+              return Container();
+            case 3:
+              return Container();
+            default:
+              return Container();
+          }
+        },
       ),
     );
   }

@@ -9,7 +9,13 @@ class RestService {
 
   Future<void> simulateHttpCalls() async {
     _dio = null;
-    _dio = Dio();
+    _dio = Dio(
+      BaseOptions(
+        connectTimeout: Duration(seconds: 5),
+        receiveTimeout: Duration(seconds: 5),
+        sendTimeout: Duration(seconds: 5),
+      ),
+    );
     _dio?.interceptors.add(
       BeaconDioAdapter(beaconConfiguration: BeaconConfiguration()),
     );
