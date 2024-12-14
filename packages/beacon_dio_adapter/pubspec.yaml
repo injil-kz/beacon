@@ -1,16 +1,17 @@
 name: beacon_dio_adapter
 description: "Dio Adapter for Beacon"
-version: 0.0.1
+version: 1.0.0
 homepage: https://injil.kz
 
 environment:
-  sdk: ^3.5.4
-  flutter: ">=1.17.0"
+  sdk: ^3.6.0
+resolution: workspace
 
 dependencies:
   flutter:
     sdk: flutter
   dio: ^5.7.0
+  beacon: ^1.0.0
 
 dev_dependencies:
   flutter_test:

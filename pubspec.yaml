@@ -2,6 +2,8 @@ name: beacon_workspace
 publish_to: none
 environment:
   sdk: ^3.6.0
+  
 workspace:
   - packages/beacon
   - packages/beacon_dio_adapter
+  - example
