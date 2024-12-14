@@ -1,5 +1,4 @@
 import 'package:beacon/beacon.dart';
-import 'package:beacon/src/config/theme.dart';
 import 'package:beacon/src/presentation/widgets/cookie_view.dart';
 import 'package:beacon/src/presentation/widgets/error_view.dart';
 import 'package:beacon/src/presentation/widgets/injil_theme_wrapper.dart';

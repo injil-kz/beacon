@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:beacon/beacon.dart';
-import 'package:beacon/src/config/theme.dart';
 import 'package:beacon/src/presentation/widgets/http_call_widget.dart';
 import 'package:beacon/src/presentation/widgets/injil_theme_wrapper.dart';
 import 'package:beacon/src/presentation/widgets/logo.dart';
