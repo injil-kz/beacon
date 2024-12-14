@@ -19,7 +19,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
-
-
-
+  assets:
+    - assets/beacon_logo.png

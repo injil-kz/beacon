@@ -4,6 +4,7 @@ import 'package:beacon/beacon.dart';
 import 'package:beacon/src/config/theme.dart';
 import 'package:beacon/src/presentation/widgets/http_call_widget.dart';
 import 'package:beacon/src/presentation/widgets/injil_theme_wrapper.dart';
+import 'package:beacon/src/presentation/widgets/logo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,13 +23,23 @@ class _BeaconScreenState extends State<BeaconScreen> {
     return InjThemeWrapper(
       child: CupertinoPageScaffold(
         navigationBar: const CupertinoNavigationBar(
-          middle: Text('Beacon'),
+          middle: Text.rich(
+            TextSpan(
+              children: [
+                WidgetSpan(child: BeaconLogo(), alignment: PlaceholderAlignment.middle),
+                TextSpan(
+                  text: ' Beacon',
+                ),
+              ],
+            ),
+            textAlign: TextAlign.start,
+          ),
           leading: BackButton(),
         ),
         child: SafeArea(
           child: Material(
-            child: StreamBuilder<List<BeaconHttpCall>>(
-              stream: _beaconConfig.repo.getHttpCalls().asStream(),
+            child: FutureBuilder<List<BeaconHttpCall>>(
+              future: _beaconConfig.repo.getHttpCalls(),
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
                   return const Center(

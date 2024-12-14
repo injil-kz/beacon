@@ -6,8 +6,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SeeFullBodyScreen extends StatelessWidget {
-  const SeeFullBodyScreen({super.key, this.body});
+  const SeeFullBodyScreen({
+    required this.contentType,
+    super.key,
+    this.body,
+  });
   final dynamic body;
+  final String contentType;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +32,7 @@ class SeeFullBodyScreen extends StatelessWidget {
               child: BodyDisplayWidget(
                 body: body,
                 allowFullDisplay: true,
+                contentType: contentType,
               ),
             ),
           ),

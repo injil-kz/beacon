@@ -52,6 +52,8 @@ class RestService {
         'userId': 1,
       },
     );
+    print('Cookie ');
+    await _dio!.get('http://localhost/cookies');
     print('PUT Post');
     await _dio!.delete(
       'https://jsonplaceholder.typicode.com/posts/1',
@@ -78,6 +80,8 @@ class RestService {
       },
     );
     print('HEAD Post');
+    await _dio!.get('http://localhost/image/jpeg');
+    print('Image');
   }
 }
 
@@ -129,10 +133,12 @@ class BeaconDioAdapter extends QueuedInterceptor {
   @override
   void onError(DioException exp, ErrorInterceptorHandler handler) {
     final generatedId = exp.requestOptions.headers['x-request-id'];
+
     beaconConfiguration.repo.saveError(
       BeaconHttpError(
-        statusCode: exp.response?.statusCode ?? 0,
+        statusCode: exp.response?.statusCode ?? -1,
         message: exp.message ?? exp.error.toString(),
+        details: 'Type:${exp.type}\nError: ${exp.error.toString()}',
         xRequestId: generatedId,
       ),
     );

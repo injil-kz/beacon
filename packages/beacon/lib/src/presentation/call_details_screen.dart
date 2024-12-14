@@ -1,5 +1,7 @@
 import 'package:beacon/beacon.dart';
 import 'package:beacon/src/config/theme.dart';
+import 'package:beacon/src/presentation/widgets/cookie_view.dart';
+import 'package:beacon/src/presentation/widgets/error_view.dart';
 import 'package:beacon/src/presentation/widgets/injil_theme_wrapper.dart';
 import 'package:beacon/src/presentation/widgets/request_view.dart';
 import 'package:beacon/src/presentation/widgets/response_view.dart';
@@ -57,9 +59,17 @@ class _CallDetailsScreenState extends State<CallDetailsScreen> {
                 ),
               );
             case 2:
-              return Container();
+              return Material(
+                child: ErrorView(
+                  httpCall: widget.httpCall,
+                ),
+              );
             case 3:
-              return Container();
+              return Material(
+                child: CookieView(
+                  httpCall: widget.httpCall,
+                ),
+              );
             default:
               return Container();
           }

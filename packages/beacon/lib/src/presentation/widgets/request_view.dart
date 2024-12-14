@@ -3,6 +3,7 @@
 import 'package:beacon/beacon.dart';
 import 'package:beacon/src/presentation/widgets/body_display_widget.dart';
 import 'package:beacon/src/presentation/widgets/json_describe_widget.dart';
+import 'package:beacon/src/presentation/widgets/logo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +15,11 @@ class RequestView extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final uri = Uri.parse(httpCall.request.path);
-    final titleStyle = textTheme.headlineSmall?.copyWith(
+    final titleStyle = textTheme.titleLarge?.copyWith(
       color: Theme.of(context).colorScheme.primary,
+    );
+    final valueStyle = textTheme.titleLarge?.copyWith(
+      color: Colors.grey[400],
     );
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(
@@ -32,7 +36,6 @@ class RequestView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 25),
                 Text.rich(
                   TextSpan(
                     children: [
@@ -105,9 +108,7 @@ class RequestView extends StatelessWidget {
                       ),
                       TextSpan(
                         text: ' ${uri.path}',
-                        style: textTheme.headlineSmall?.copyWith(
-                          color: Colors.grey[400],
-                        ),
+                        style: valueStyle,
                       ),
                     ],
                   ),
@@ -124,9 +125,7 @@ class RequestView extends StatelessWidget {
                       TextSpan(
                         text: DateTime.fromMillisecondsSinceEpoch(httpCall.request.timestampInMilliseconds.toInt())
                             .toIso8601String(),
-                        style: textTheme.headlineSmall?.copyWith(
-                          color: Colors.grey[400],
-                        ),
+                        style: valueStyle,
                       ),
                     ],
                   ),
@@ -141,9 +140,7 @@ class RequestView extends StatelessWidget {
                       ),
                       TextSpan(
                         text: '${httpCall.request.connectionTimeout} ms',
-                        style: textTheme.headlineSmall?.copyWith(
-                          color: Colors.grey[400],
-                        ),
+                        style: valueStyle,
                       ),
                     ],
                   ),
@@ -158,9 +155,7 @@ class RequestView extends StatelessWidget {
                       ),
                       TextSpan(
                         text: '${httpCall.request.receiveTimeout} ms',
-                        style: textTheme.headlineSmall?.copyWith(
-                          color: Colors.grey[400],
-                        ),
+                        style: valueStyle,
                       ),
                     ],
                   ),
@@ -203,6 +198,7 @@ class RequestView extends StatelessWidget {
                 const SizedBox(height: 10),
                 BodyDisplayWidget(
                   body: httpCall.request.body,
+                  contentType: httpCall.request.headers?['content-type'] as String? ?? 'application/json',
                 ),
               ],
             ),

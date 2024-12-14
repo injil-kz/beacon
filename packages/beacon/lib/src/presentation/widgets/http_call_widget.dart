@@ -91,16 +91,23 @@ class HttpCallWidget extends StatelessWidget {
           ],
         ],
       ),
-      trailing: httpCall.response == null
-          ? const CupertinoActivityIndicator(
-              color: Colors.white,
-            )
-          : Text(
-              httpCall.response?.statusCode.toString() ?? '',
+      trailing: httpCall.error != null
+          ? Text(
+              'Error',
               style: textTheme.bodyMedium?.copyWith(
-                color: httpCall.response?.statusCode.color,
+                color: 500.color,
               ),
-            ),
+            )
+          : httpCall.response == null
+              ? const CupertinoActivityIndicator(
+                  color: Colors.white,
+                )
+              : Text(
+                  httpCall.response?.statusCode.toString() ?? '',
+                  style: textTheme.bodyMedium?.copyWith(
+                    color: httpCall.response?.statusCode.color,
+                  ),
+                ),
     );
   }
 }
