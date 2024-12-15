@@ -29,19 +29,6 @@ enum BeaconContentType {
   final String header;
 
   static bool isImage(String contentType) {
-    return [
-      BeaconContentType.imagePng,
-      BeaconContentType.imageJpeg,
-      BeaconContentType.imageGif,
-      BeaconContentType.imageSvg,
-      BeaconContentType.imageWebp,
-      BeaconContentType.imageBmp,
-      BeaconContentType.imageIco,
-      BeaconContentType.imageTiff,
-      BeaconContentType.imageTga,
-      BeaconContentType.imagePsd,
-      BeaconContentType.imageHeif,
-      BeaconContentType.imageAvif,
-    ].any((element) => element.header == contentType);
+    return contentType.contains('image/');
   }
 }

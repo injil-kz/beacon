@@ -56,7 +56,7 @@ class _ToastBuilder extends StatelessWidget {
                 : Colors.blue;
     return AnimatedOpacity(
       opacity: notifier.show ? 1.0 : 0.0,
-      duration: const Duration(milliseconds: 777),
+      duration: const Duration(milliseconds: 333),
       child: Material(
         elevation: 4,
         borderRadius: BorderRadius.circular(8),

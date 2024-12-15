@@ -31,8 +31,14 @@ class BodyDisplayWidget extends StatelessWidget {
       );
     }
 
-    if (BeaconContentType.applicationJson.header == contentType) {
+    if (contentType.contains(BeaconContentType.applicationJson.header)) {
       if (body is Map) {
+        if ((body as Map).isEmpty) {
+          return Text(
+            'Empty JSON Object',
+            style: textStyle,
+          );
+        }
         final hasJsonObjectWrapperinTree = context.findAncestorWidgetOfExactType<_JsonObjectWrapper>() != null;
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
