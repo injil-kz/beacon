@@ -50,8 +50,6 @@ class RestService {
         'userId': 1,
       },
     );
-    print('Cookie ');
-    await _dio!.get('http://localhost/cookies');
     print('PUT Post');
     await _dio!.delete(
       'https://jsonplaceholder.typicode.com/posts/1',
@@ -78,7 +76,5 @@ class RestService {
       },
     );
     print('HEAD Post');
-    await _dio!.get('http://localhost/image/jpeg');
-    print('Image');
   }
 }

@@ -2,7 +2,10 @@ name: beacon_workspace
 publish_to: none
 environment:
   sdk: ^3.6.0
-  
+
+dependencies: 
+  beacon: ^1.0.1
+   
 workspace:
   - packages/beacon
   - packages/beacon_dio_adapter

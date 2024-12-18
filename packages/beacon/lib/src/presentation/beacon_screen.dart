@@ -20,8 +20,8 @@ class _BeaconScreenState extends State<BeaconScreen> {
   @override
   Widget build(BuildContext context) {
     return InjThemeWrapper(
-      child: CupertinoPageScaffold(
-        navigationBar: const CupertinoNavigationBar(
+      child: Scaffold(
+        appBar: const CupertinoNavigationBar(
           middle: Text.rich(
             TextSpan(
               children: [
@@ -35,7 +35,7 @@ class _BeaconScreenState extends State<BeaconScreen> {
           ),
           leading: BackButton(),
         ),
-        child: SafeArea(
+        body: SafeArea(
           child: Material(
             child: FutureBuilder<List<BeaconHttpCall>>(
               future: _beaconConfig.repo.getHttpCalls(),
