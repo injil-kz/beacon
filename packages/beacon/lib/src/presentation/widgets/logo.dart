@@ -29,7 +29,7 @@ class BeaconLogo extends StatelessWidget {
 
 class InjTitle extends StatelessWidget {
   final String title;
-  final List<String> colors;
+  final List<String>? colors;
   final TextStyle? style;
   final TextAlign? textAlign;
   final bool selectable;
@@ -38,7 +38,7 @@ class InjTitle extends StatelessWidget {
   const InjTitle({
     super.key,
     required this.title,
-    required this.colors,
+    this.colors,
     this.style,
     this.textAlign,
     this.selectable = false,
@@ -51,7 +51,11 @@ class InjTitle extends StatelessWidget {
       final LinearGradient gradient = LinearGradient(
         begin: Alignment.bottomCenter,
         end: Alignment.topCenter,
-        colors: colors.cast<String>().map((string) => string.toColor).toList().cast<Color>(),
+        colors: (colors == null || colors!.isEmpty ? ["#C9D6FF", "#E2E2E2"] : colors)!
+            .cast<String>()
+            .map((string) => string.toColor)
+            .toList()
+            .cast<Color>(),
       );
 
       return ShaderMask(

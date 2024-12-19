@@ -6,6 +6,7 @@ import 'package:beacon/beacon.dart';
 import 'package:beacon/src/config/theme.dart';
 import 'package:beacon/src/presentation/widgets/http_call_widget.dart';
 import 'package:beacon/src/presentation/widgets/injil_theme_wrapper.dart';
+import 'package:beacon/src/presentation/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 

@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:beacon/src/presentation/widgets/body_display_widget.dart';
 import 'package:beacon/src/presentation/widgets/injil_theme_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,45 +14,47 @@ class JsonDescribeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme.bodySmall;
-    return Material(
-      child: InkWell(
-        onLongPress: () async {
-          await Clipboard.setData(ClipboardData(text: jsonEncode(json)));
-          BeaconToastNotifier.of(context)?.addToast(
-            'Copied to Clipboard',
-            BeaconToastType.success,
-          );
-        },
-        child: ListView.separated(
-          shrinkWrap: true,
-          itemCount: json.length,
-          physics: const NeverScrollableScrollPhysics(),
-          separatorBuilder: (context, index) => const SizedBox(height: 5),
-          itemBuilder: (context, index) {
-            final header = json.entries.elementAt(index);
-            return Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: header.key,
-                    style: textStyle,
-                  ),
-                  TextSpan(
-                    text: ': ',
-                    style: textStyle,
-                  ),
-                  TextSpan(
-                    text: header.value.toString(),
-                    style: textStyle?.copyWith(
-                      color: Colors.grey[400],
-                    ),
-                  ),
-                ],
-              ),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+    return CopyAbleElement(
+      child: Material(
+        child: InkWell(
+          onLongPress: () async {
+            await Clipboard.setData(ClipboardData(text: jsonEncode(json)));
+            BeaconToastNotifier.of(context)?.addToast(
+              'Copied to Clipboard',
+              BeaconToastType.success,
             );
           },
+          child: ListView.separated(
+            shrinkWrap: true,
+            itemCount: json.length,
+            physics: const NeverScrollableScrollPhysics(),
+            separatorBuilder: (context, index) => const SizedBox(height: 5),
+            itemBuilder: (context, index) {
+              final header = json.entries.elementAt(index);
+              return Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: header.key,
+                      style: textStyle,
+                    ),
+                    TextSpan(
+                      text: ': ',
+                      style: textStyle,
+                    ),
+                    TextSpan(
+                      text: header.value.toString(),
+                      style: textStyle?.copyWith(
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                  ],
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              );
+            },
+          ),
         ),
       ),
     );

@@ -39,7 +39,7 @@ class BodyDisplayWidget extends StatelessWidget {
             style: textStyle,
           );
         }
-        final hasJsonObjectWrapperinTree = context.findAncestorWidgetOfExactType<_JsonObjectWrapper>() != null;
+        final hasJsonObjectWrapperinTree = context.findAncestorWidgetOfExactType<CopyAbleElement>() != null;
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -54,9 +54,7 @@ class BodyDisplayWidget extends StatelessWidget {
                 child: JsonDescribeWidget(json: body as Map<String, dynamic>),
               )
             else
-              _JsonObjectWrapper(
-                child: JsonDescribeWidget(json: body as Map<String, dynamic>),
-              ),
+              JsonDescribeWidget(json: body as Map<String, dynamic>),
           ],
         );
       } else if (body is String || body is num) {
@@ -79,11 +77,9 @@ class BodyDisplayWidget extends StatelessWidget {
               itemBuilder: (context, index) {
                 // ignore: avoid_dynamic_calls
                 final item = body[index];
-                return _JsonObjectWrapper(
-                  child: BodyDisplayWidget(
-                    body: item,
-                    contentType: contentType,
-                  ),
+                return BodyDisplayWidget(
+                  body: item,
+                  contentType: contentType,
                 );
               },
             ),
@@ -149,13 +145,13 @@ class BodyDisplayWidget extends StatelessWidget {
   }
 }
 
-class _JsonObjectWrapper extends StatelessWidget {
-  const _JsonObjectWrapper({required this.child});
+class CopyAbleElement extends StatelessWidget {
+  const CopyAbleElement({required this.child});
   final Widget child;
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: Theme.of(context).colorScheme.primary.withOpacity(0.33),
+      color: Theme.of(context).colorScheme.primary.withAlpha((255 * 0.33).round()),
       child: Padding(
         padding: const EdgeInsets.only(left: 8),
         child: ColoredBox(
