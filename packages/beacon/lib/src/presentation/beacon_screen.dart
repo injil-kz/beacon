@@ -72,12 +72,6 @@ class __BeaconViewState extends State<_BeaconView> {
                   snap: true,
                   leading: BackButton(color: injilTheme.colorScheme.primary),
                   title: Text('Beacon'),
-                  actions: [
-                    IconButton(
-                      icon: const Icon(Icons.refresh),
-                      onPressed: () {},
-                    ),
-                  ],
                 ),
                 if (calls.isEmpty)
                   SliverFillRemaining(

@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:beacon/beacon.dart';
+import 'package:beacon/src/config/theme.dart';
 import 'package:beacon/src/presentation/widgets/json_describe_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,113 +30,127 @@ class CookieView extends StatelessWidget {
       orElse: () => '',
     );
     final responseCookie = httpCall.response?.headers?[responseCookieKey] as String?;
-    return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-        leading: BackButton(),
-        middle: Text('Cookie'),
-      ),
-      child: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 8,
+
+    return SafeArea(
+      top: true,
+      bottom: true,
+      child: Material(
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              floating: true,
+              pinned: false,
+              snap: true,
+              leading: BackButton(color: injilTheme.colorScheme.primary),
+              title: Text('Cookie'),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text.rich(
-                  TextSpan(
-                    children: [
-                      if (uri.scheme == 'https')
-                        WidgetSpan(
-                          child: Icon(
-                            Icons.lock_outline,
-                            color: 200.color,
-                            size: 20,
-                          ),
-                        )
-                      else
-                        WidgetSpan(
-                          child: Icon(
-                            Icons.lock_open_outlined,
-                            color: 500.color,
-                            size: 20,
+            SliverList(
+              delegate: SliverChildListDelegate.fixed(
+                [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text.rich(
+                          TextSpan(
+                            children: [
+                              if (uri.scheme == 'https')
+                                WidgetSpan(
+                                  child: Icon(
+                                    Icons.lock_outline,
+                                    color: 200.color,
+                                    size: 20,
+                                  ),
+                                )
+                              else
+                                WidgetSpan(
+                                  child: Icon(
+                                    Icons.lock_open_outlined,
+                                    color: 500.color,
+                                    size: 20,
+                                  ),
+                                ),
+                              TextSpan(
+                                text: ' ${uri.host}',
+                                style: textTheme.titleMedium?.copyWith(
+                                  color: Colors.grey[400],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      TextSpan(
-                        text: ' ${uri.host}',
-                        style: textTheme.titleMedium?.copyWith(
-                          color: Colors.grey[400],
+                        const SizedBox(height: 15),
+                        Text.rich(
+                          TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'ID: ',
+                                style: titleStyle,
+                              ),
+                              TextSpan(
+                                text: httpCall.xRequestId,
+                                style: valueStyle,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 15),
-                Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'ID: ',
-                        style: titleStyle,
-                      ),
-                      TextSpan(
-                        text: httpCall.xRequestId,
-                        style: valueStyle,
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 15),
-                Text.rich(
-                  TextSpan(
-                    text: 'Sent Cookie ',
-                    children: [
-                      TextSpan(
-                        text: '(Request)',
-                        style: valueStyle,
-                      ),
-                    ],
-                  ),
-                  style: titleStyle,
-                ),
-                const SizedBox(height: 10),
-                if (requestCookie != null)
-                  JsonDescribeWidget(json: getCookieMap(requestCookie))
-                else
-                  Text(
-                    'No cookie sent',
-                    style: textTheme.bodyLarge?.copyWith(
-                      color: Colors.grey[400],
+                        const SizedBox(height: 15),
+                        Text.rich(
+                          TextSpan(
+                            text: 'Sent Cookie ',
+                            children: [
+                              TextSpan(
+                                text: '(Request)',
+                                style: valueStyle,
+                              ),
+                            ],
+                          ),
+                          style: titleStyle,
+                        ),
+                        const SizedBox(height: 10),
+                        if (requestCookie != null)
+                          JsonDescribeWidget(json: getCookieMap(requestCookie))
+                        else
+                          Text(
+                            'No cookie sent',
+                            style: textTheme.bodyLarge?.copyWith(
+                              color: Colors.grey[400],
+                            ),
+                          ),
+                        const SizedBox(height: 15),
+                        Text.rich(
+                          TextSpan(
+                            text: 'Set-Cookie ',
+                            children: [
+                              TextSpan(
+                                text: '(Response)',
+                                style: valueStyle,
+                              ),
+                            ],
+                          ),
+                          style: titleStyle,
+                        ),
+                        const SizedBox(height: 10),
+                        if (responseCookie != null)
+                          JsonDescribeWidget(json: getCookieMap(responseCookie))
+                        else
+                          Text(
+                            'Server did not set any cookie',
+                            style: textTheme.bodyLarge?.copyWith(
+                              color: Colors.grey[400],
+                            ),
+                          ),
+                      ],
                     ),
                   ),
-                const SizedBox(height: 15),
-                Text.rich(
-                  TextSpan(
-                    text: 'Set-Cookie ',
-                    children: [
-                      TextSpan(
-                        text: '(Response)',
-                        style: valueStyle,
-                      ),
-                    ],
-                  ),
-                  style: titleStyle,
-                ),
-                const SizedBox(height: 10),
-                if (responseCookie != null)
-                  JsonDescribeWidget(json: getCookieMap(responseCookie))
-                else
-                  Text(
-                    'Server did not set any cookie',
-                    style: textTheme.bodyLarge?.copyWith(
-                      color: Colors.grey[400],
-                    ),
-                  ),
-              ],
-            ),
-          ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

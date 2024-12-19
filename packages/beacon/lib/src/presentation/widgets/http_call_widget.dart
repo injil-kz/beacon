@@ -2,9 +2,12 @@
 
 import 'package:beacon/beacon.dart';
 import 'package:beacon/src/presentation/call_details_screen.dart';
+import 'package:beacon/src/presentation/widgets/injil_theme_wrapper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
+
+import 'package:flutter/services.dart';
 
 class HttpCallWidget extends StatelessWidget {
   const HttpCallWidget({
@@ -18,6 +21,13 @@ class HttpCallWidget extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final uri = Uri.parse(httpCall.request.path);
     return ListTile(
+      onLongPress: () async {
+        await Clipboard.setData(ClipboardData(text: httpCall.request.cURL));
+        BeaconToastNotifier.of(context)?.addToast(
+          'Copied to Clipboard',
+          BeaconToastType.success,
+        );
+      },
       onTap: () {
         Navigator.of(context).push(
           CupertinoPageRoute<void>(
@@ -46,6 +56,7 @@ class HttpCallWidget extends StatelessWidget {
       ),
       subtitle: Row(
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Flexible(
             flex: 21,
@@ -58,7 +69,7 @@ class HttpCallWidget extends StatelessWidget {
                       child: Icon(
                         Icons.lock_outline,
                         color: 200.color,
-                        size: 16,
+                        size: 12,
                       ),
                     )
                   else
@@ -66,12 +77,12 @@ class HttpCallWidget extends StatelessWidget {
                       child: Icon(
                         Icons.lock_open_outlined,
                         color: 500.color,
-                        size: 16,
+                        size: 12,
                       ),
                     ),
                   TextSpan(
                     text: ' ${uri.host}',
-                    style: textTheme.labelMedium?.copyWith(
+                    style: textTheme.labelSmall?.copyWith(
                       color: Colors.grey[400],
                     ),
                   ),
@@ -82,20 +93,20 @@ class HttpCallWidget extends StatelessWidget {
           if (httpCall.response != null) ...[
             const Spacer(flex: 3),
             Flexible(
-              flex: 4,
+              flex: 9,
               child: Text(
                 _formatMilliseconds(httpCall.response?.responseTimeInMilliseconds?.toInt() ?? 0),
-                style: textTheme.bodySmall?.copyWith(
+                style: textTheme.labelSmall?.copyWith(
                   color: httpCall.response?.statusCode.color,
                 ),
               ),
             ),
             const Spacer(flex: 5),
             Flexible(
-              flex: 4,
+              flex: 9,
               child: Text(
                 _formatBytes(httpCall.response?.size ?? 0),
-                style: textTheme.bodySmall?.copyWith(
+                style: textTheme.labelSmall?.copyWith(
                   color: httpCall.response?.statusCode.color,
                 ),
               ),

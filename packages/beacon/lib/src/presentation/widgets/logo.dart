@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'dart:ui' show Color;
 
 extension StringExt on String {
   String get capitalize => this[0].toUpperCase() + this.substring(1);

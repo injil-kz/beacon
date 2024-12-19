@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:beacon_dio_adapter/beacon_dio_adapter.dart';
 
 void main() {
   test('adds one to input values', () {

@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:beacon/beacon.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:beacon/src/config/theme.dart';
 import 'package:flutter/material.dart';
 
 class ErrorView extends StatelessWidget {
@@ -18,122 +18,137 @@ class ErrorView extends StatelessWidget {
     final valueStyle = textTheme.titleLarge?.copyWith(
       color: Colors.grey[400],
     );
-    return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-        leading: BackButton(),
-        middle: Text('Error'),
-      ),
-      child: SafeArea(
-        child: httpCall.error == null
-            ? Center(
-                child: httpCall.response != null
-                    ? Text(
-                        'No errors',
-                        style: titleStyle,
-                      )
-                    : const CircularProgressIndicator.adaptive(),
-              )
-            : SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 8,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text.rich(
-                        TextSpan(
-                          children: [
-                            if (uri.scheme == 'https')
-                              WidgetSpan(
-                                child: Icon(
-                                  Icons.lock_outline,
-                                  color: 200.color,
-                                  size: 30,
-                                ),
-                              )
-                            else
-                              WidgetSpan(
-                                child: Icon(
-                                  Icons.lock_open_outlined,
-                                  color: 500.color,
-                                  size: 30,
+    return SafeArea(
+      top: true,
+      bottom: true,
+      child: Material(
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              floating: true,
+              pinned: false,
+              snap: true,
+              leading: BackButton(color: injilTheme.colorScheme.primary),
+              title: Text('Error'),
+            ),
+            httpCall.error == null
+                ? SliverFillRemaining(
+                    child: Center(
+                      child: httpCall.response != null
+                          ? Text(
+                              'No errors',
+                              style: titleStyle,
+                            )
+                          : const CircularProgressIndicator.adaptive(),
+                    ),
+                  )
+                : SliverList(
+                    delegate: SliverChildListDelegate.fixed(
+                      [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text.rich(
+                                TextSpan(
+                                  children: [
+                                    if (uri.scheme == 'https')
+                                      WidgetSpan(
+                                        child: Icon(
+                                          Icons.lock_outline,
+                                          color: 200.color,
+                                          size: 30,
+                                        ),
+                                      )
+                                    else
+                                      WidgetSpan(
+                                        child: Icon(
+                                          Icons.lock_open_outlined,
+                                          color: 500.color,
+                                          size: 30,
+                                        ),
+                                      ),
+                                    TextSpan(
+                                      text: ' ${uri.host}',
+                                      style: textTheme.titleLarge?.copyWith(
+                                        color: Colors.grey[400],
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            TextSpan(
-                              text: ' ${uri.host}',
-                              style: textTheme.titleLarge?.copyWith(
-                                color: Colors.grey[400],
+                              const SizedBox(height: 15),
+                              Text.rich(
+                                TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: 'ID: ',
+                                      style: titleStyle,
+                                    ),
+                                    TextSpan(
+                                      text: httpCall.xRequestId,
+                                      style: valueStyle,
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                              const SizedBox(height: 5),
+                              Text.rich(
+                                TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: 'Status Code: ',
+                                      style: titleStyle,
+                                    ),
+                                    TextSpan(
+                                      text: '${httpCall.error!.statusCode}',
+                                      style: valueStyle,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(height: 5),
+                              Text.rich(
+                                TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: 'Message: ',
+                                      style: titleStyle,
+                                    ),
+                                    TextSpan(
+                                      text: httpCall.error!.message,
+                                      style: valueStyle,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(height: 5),
+                              Text.rich(
+                                TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: 'Details: ',
+                                      style: titleStyle,
+                                    ),
+                                    TextSpan(
+                                      text: '${httpCall.error!.details}',
+                                      style: valueStyle,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 15),
-                      Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(
-                              text: 'ID: ',
-                              style: titleStyle,
-                            ),
-                            TextSpan(
-                              text: httpCall.xRequestId,
-                              style: valueStyle,
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 5),
-                      Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(
-                              text: 'Status Code: ',
-                              style: titleStyle,
-                            ),
-                            TextSpan(
-                              text: '${httpCall.error!.statusCode}',
-                              style: valueStyle,
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 5),
-                      Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(
-                              text: 'Message: ',
-                              style: titleStyle,
-                            ),
-                            TextSpan(
-                              text: httpCall.error!.message,
-                              style: valueStyle,
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 5),
-                      Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(
-                              text: 'Details: ',
-                              style: titleStyle,
-                            ),
-                            TextSpan(
-                              text: '${httpCall.error!.details}',
-                              style: valueStyle,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ),
+          ],
+        ),
       ),
     );
   }
