@@ -36,8 +36,9 @@ class HttpCallWidget extends StatelessWidget {
                 color: httpCall.request.method.color,
               ),
             ),
+            WidgetSpan(child: SizedBox(width: 5)),
             TextSpan(
-              text: '  ${uri.path}',
+              text: uri.path,
               style: textTheme.bodyMedium,
             ),
           ],

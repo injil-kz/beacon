@@ -14,10 +14,10 @@ class ResponseView extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final uri = Uri.parse(httpCall.request.path);
-    final titleStyle = textTheme.titleLarge?.copyWith(
+    final titleStyle = textTheme.titleMedium?.copyWith(
       color: Theme.of(context).colorScheme.primary,
     );
-    final valueStyle = textTheme.titleLarge?.copyWith(
+    final valueStyle = textTheme.titleMedium?.copyWith(
       color: Colors.grey[400],
     );
     return CupertinoPageScaffold(
@@ -56,7 +56,7 @@ class ResponseView extends StatelessWidget {
                                 child: Icon(
                                   Icons.lock_outline,
                                   color: 200.color,
-                                  size: 30,
+                                  size: 20,
                                 ),
                               )
                             else
@@ -64,12 +64,12 @@ class ResponseView extends StatelessWidget {
                                 child: Icon(
                                   Icons.lock_open_outlined,
                                   color: 500.color,
-                                  size: 30,
+                                  size: 20,
                                 ),
                               ),
                             TextSpan(
                               text: ' ${uri.host}',
-                              style: textTheme.titleLarge?.copyWith(
+                              style: textTheme.titleMedium?.copyWith(
                                 color: Colors.grey[400],
                               ),
                             ),

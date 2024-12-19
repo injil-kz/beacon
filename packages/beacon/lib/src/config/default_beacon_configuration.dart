@@ -1,17 +1,18 @@
 import 'package:beacon/src/data/repository/in_memory_beacon_repository.dart';
+import 'package:beacon/src/domain/beacon_configuration.dart';
 import 'package:beacon/src/domain/repository/beacon_repository.dart';
 
 /// A configuration class that provides access to beacon-related data and operations.
-class BeaconConfiguration {
+class DefaultBeaconConfiguration extends BeaconConfiguration {
   /// A factory constructor that returns the singleton instance of the `BeaconConfiguration` class.
-  factory BeaconConfiguration() {
+  factory DefaultBeaconConfiguration() {
     return _instance;
   }
-  BeaconConfiguration._privateConstructor({
+  DefaultBeaconConfiguration._privateConstructor({
     required this.repo,
   });
 
-  static final BeaconConfiguration _instance = BeaconConfiguration._privateConstructor(
+  static final DefaultBeaconConfiguration _instance = DefaultBeaconConfiguration._privateConstructor(
     repo: InMemoryBeaconRepository(),
   );
 

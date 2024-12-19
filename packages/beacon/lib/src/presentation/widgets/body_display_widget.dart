@@ -22,7 +22,7 @@ class BodyDisplayWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final textStyle = textTheme.titleLarge;
+    final textStyle = textTheme.titleMedium;
 
     if (body == null) {
       return Text(

@@ -15,7 +15,7 @@ class RestService {
       ),
     );
     _dio?.interceptors.add(
-      BeaconDioAdapter(beaconConfiguration: BeaconConfiguration()),
+      BeaconDioAdapter(beaconConfiguration: DefaultBeaconConfiguration()),
     );
 
     await _dio!.get(
@@ -25,6 +25,7 @@ class RestService {
       },
     );
     print('GET Posts');
+    await Future.delayed(Duration(seconds: 3));
     await _dio!.get(
       'https://jsonplaceholder.typicode.com/comments',
       queryParameters: {
@@ -32,6 +33,8 @@ class RestService {
       },
     );
     print('GET Comments');
+
+    await Future.delayed(Duration(seconds: 3));
     await _dio!.post(
       'https://jsonplaceholder.typicode.com/posts',
       data: {
@@ -41,6 +44,8 @@ class RestService {
       },
     );
     print('POST Post');
+
+    await Future.delayed(Duration(seconds: 3));
     await _dio!.put(
       'https://jsonplaceholder.typicode.com/posts/1',
       data: {
@@ -51,10 +56,14 @@ class RestService {
       },
     );
     print('PUT Post');
+
+    await Future.delayed(Duration(seconds: 3));
     await _dio!.delete(
       'https://jsonplaceholder.typicode.com/posts/1',
     );
     print('DELETE Post');
+
+    await Future.delayed(Duration(seconds: 3));
     await _dio!.patch(
       'https://jsonplaceholder.typicode.com/posts/1',
       data: {
@@ -66,6 +75,7 @@ class RestService {
     );
     print('PATCH Post');
 
+    await Future.delayed(Duration(seconds: 3));
     await _dio!.head(
       'https://jsonplaceholder.typicode.com/posts/1',
       data: {

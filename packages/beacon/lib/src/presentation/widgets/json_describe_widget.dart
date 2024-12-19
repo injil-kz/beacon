@@ -12,7 +12,7 @@ class JsonDescribeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme.bodyLarge;
+    final textStyle = Theme.of(context).textTheme.bodySmall;
     return Material(
       child: InkWell(
         onLongPress: () async {

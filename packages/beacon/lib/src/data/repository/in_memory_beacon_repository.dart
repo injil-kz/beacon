@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:beacon/src/domain/models/http_call.dart';
 import 'package:beacon/src/domain/models/impl/http_error.dart';
 import 'package:beacon/src/domain/models/impl/http_request.dart';
@@ -6,10 +8,20 @@ import 'package:beacon/src/domain/repository/beacon_repository.dart';
 
 /// An in-memory implementation of the `BeaconRepository` interface.
 class InMemoryBeaconRepository implements BeaconRepository {
+  InMemoryBeaconRepository() : _streamController = StreamController<List<BeaconHttpCall>>.broadcast();
   final List<BeaconHttpCall> _calls = [];
+  final StreamController<List<BeaconHttpCall>> _streamController;
+
+  @override
+  Stream<List<BeaconHttpCall>> get httpCalls => _streamController.stream;
 
   @override
   Future<List<BeaconHttpCall>> getHttpCalls() => Future.value(_calls);
+
+  @override
+  Future<void> close() async {
+    await _streamController.close();
+  }
 
   @override
   Future<void> saveError(BeaconHttpError error) async {
@@ -23,6 +35,7 @@ class InMemoryBeaconRepository implements BeaconRepository {
     );
     if (index != -1) {
       _calls[index] = _calls[index].copyWith(newError: error);
+      _syncStream();
     } else {
       throw ArgumentError('No request found with x-request-id: $xRequestCallId');
     }
@@ -42,6 +55,7 @@ class InMemoryBeaconRepository implements BeaconRepository {
       throw ArgumentError('Request with x-request-id: $xRequestCallId already exists');
     } else {
       _calls.add(BeaconHttpCall(xRequestId: xRequestCallId, request: request));
+      _syncStream();
     }
   }
 
@@ -62,8 +76,17 @@ class InMemoryBeaconRepository implements BeaconRepository {
           responseTimeInMilliseconds: response.timestampInMilliseconds - call.request.timestampInMilliseconds,
         ),
       );
+      _syncStream();
     } else {
       throw ArgumentError('No request found with x-request-id: $xRequestCallId');
     }
+  }
+
+  void _syncStream() {
+    if (_calls.length > 20) {
+      _calls.removeRange(0, _calls.length - 20);
+    }
+
+    _streamController.sink.add(List<BeaconHttpCall>.unmodifiable(_calls));
   }
 }

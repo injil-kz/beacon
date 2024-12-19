@@ -3,7 +3,7 @@ import 'package:example/service/navigation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  final configuration = BeaconConfiguration();
+  final configuration = DefaultBeaconConfiguration();
   runApp(MyApp(configuration: configuration));
 }
 
@@ -20,9 +20,12 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: router.config(),
-      debugShowCheckedModeBanner: false,
+    return BeaconConfigurationProvider(
+      configuration: widget.configuration,
+      child: MaterialApp.router(
+        routerConfig: router.config(),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }

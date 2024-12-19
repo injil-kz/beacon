@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:beacon/src/domain/models/http_call.dart';
 import 'package:beacon/src/domain/models/impl/http_error.dart';
 import 'package:beacon/src/domain/models/impl/http_request.dart';
@@ -32,4 +34,8 @@ abstract class BeaconRepository {
   ///
   /// Returns a [Future] that completes with a list of [BeaconHttpCall] objects.
   Future<List<BeaconHttpCall>> getHttpCalls();
+
+  Stream<List<BeaconHttpCall>> get httpCalls;
+
+  Future<void> close();
 }
