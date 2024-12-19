@@ -9,4 +9,5 @@ dependencies:
 workspace:
   - packages/beacon
   - packages/beacon_dio_adapter
+  - packages/beacon_mobile_inspector
   - example

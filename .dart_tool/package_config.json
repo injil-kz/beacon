@@ -512,13 +512,19 @@
       "languageVersion": "3.6"
     },
     {
+      "name": "beacon_mobile_inspector",
+      "rootUri": "../packages/beacon_mobile_inspector",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
       "name": "example",
       "rootUri": "../example",
       "packageUri": "lib/",
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2024-12-19T12:59:41.740922Z",
+  "generated": "2024-12-19T14:38:06.428902Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
   "flutterRoot": "file:///Users/yerassylmaikhanov/fvm/versions/3.27.0",

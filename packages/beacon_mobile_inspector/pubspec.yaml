@@ -1,5 +1,5 @@
-name: beacon
-description: Beacon is a simple and lightweight HTTP Logger for Dart and Flutter.
+name: beacon_mobile_inspector
+description: "A new Flutter package project."
 version: 1.0.1
 homepage: https://injil.kz
 
@@ -18,8 +18,3 @@ dev_dependencies:
     sdk: flutter
   cider: ^0.2.8
 
-
-flutter:
-  uses-material-design: true
-  assets:
-    - assets/beacon_logo.png

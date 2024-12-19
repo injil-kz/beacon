@@ -5,3 +5,6 @@ version:
 pub_analyze:
 	cd packages/beacon && flutter pub publish --dry-run
 	cd packages/beacon_dio_adapter && flutter pub publish --dry-run
+
+get:
+	dart pub get
