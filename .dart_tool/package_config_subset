@@ -210,6 +210,10 @@ petitparser
 3.2
 file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/petitparser-6.0.2/
 file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/petitparser-6.0.2/lib/
+plugin_platform_interface
+3.0
+file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.8/
+file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.8/lib/
 pool
 2.12
 file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/pool-1.5.1/
@@ -226,6 +230,14 @@ rfc_6901
 3.0
 file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/rfc_6901-0.2.0/
 file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/rfc_6901-0.2.0/lib/
+sensors_plus
+3.3
+file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/sensors_plus-6.1.1/
+file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/sensors_plus-6.1.1/lib/
+sensors_plus_platform_interface
+2.18
+file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/sensors_plus_platform_interface-2.0.1/
+file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/sensors_plus_platform_interface-2.0.1/lib/
 shelf
 3.4
 file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/shelf-1.4.2/
@@ -326,6 +338,10 @@ beacon_dio_adapter
 3.6
 file:///Users/yerassylmaikhanov/Documents/injil.kz/Development/opensource/beacon/packages/beacon_dio_adapter/
 file:///Users/yerassylmaikhanov/Documents/injil.kz/Development/opensource/beacon/packages/beacon_dio_adapter/lib/
+beacon_mobile_inspector
+3.6
+file:///Users/yerassylmaikhanov/Documents/injil.kz/Development/opensource/beacon/packages/beacon_mobile_inspector/
+file:///Users/yerassylmaikhanov/Documents/injil.kz/Development/opensource/beacon/packages/beacon_mobile_inspector/lib/
 _macros
 3.4
 file:///Users/yerassylmaikhanov/fvm/versions/3.27.0/bin/cache/dart-sdk/pkg/_macros/
@@ -342,4 +358,8 @@ flutter_test
 3.3
 file:///Users/yerassylmaikhanov/fvm/versions/3.27.0/packages/flutter_test/
 file:///Users/yerassylmaikhanov/fvm/versions/3.27.0/packages/flutter_test/lib/
+flutter_web_plugins
+3.2
+file:///Users/yerassylmaikhanov/fvm/versions/3.27.0/packages/flutter_web_plugins/
+file:///Users/yerassylmaikhanov/fvm/versions/3.27.0/packages/flutter_web_plugins/lib/
 2

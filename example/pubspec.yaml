@@ -11,8 +11,9 @@ dependencies:
   flutter:
     sdk: flutter
   auto_route: ^9.2.2
-  beacon: ^1.0.0
-  beacon_dio_adapter: ^1.0.0
+  beacon: ^1.0.1
+  beacon_dio_adapter: ^1.0.1
+  beacon_mobile_inspector: ^1.0.1
   dio: ^5.7.0
 
 dev_dependencies:

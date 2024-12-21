@@ -146,7 +146,8 @@ class RequestView extends StatelessWidget {
                                 style: titleStyle,
                               ),
                               TextSpan(
-                                text: DateTime.fromMillisecondsSinceEpoch(httpCall.request.timestampInMilliseconds.toInt())
+                                text: DateTime.fromMillisecondsSinceEpoch(
+                                        httpCall.request.timestampInMilliseconds.toInt())
                                     .toIso8601String(),
                                 style: valueStyle,
                               ),

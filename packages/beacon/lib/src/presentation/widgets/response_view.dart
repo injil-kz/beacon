@@ -149,9 +149,9 @@ class ResponseView extends StatelessWidget {
                                       style: titleStyle,
                                     ),
                                     TextSpan(
-                                      text:
-                                          DateTime.fromMillisecondsSinceEpoch(httpCall.response!.timestampInMilliseconds.toInt())
-                                              .toString(),
+                                      text: DateTime.fromMillisecondsSinceEpoch(
+                                              httpCall.response!.timestampInMilliseconds.toInt())
+                                          .toString(),
                                       style: valueStyle,
                                     ),
                                   ],

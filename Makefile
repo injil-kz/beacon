@@ -8,3 +8,6 @@ pub_analyze:
 
 get:
 	dart pub get
+
+format:
+	dart format . --line-length=120

@@ -1,5 +1,5 @@
 name: beacon_mobile_inspector
-description: "A new Flutter package project."
+description: "Beacon Package for Mobile Devices"
 version: 1.0.1
 homepage: https://injil.kz
 
@@ -12,6 +12,8 @@ resolution: workspace
 dependencies:
   flutter:
     sdk: flutter
+  beacon: ^1.0.1
+  sensors_plus: ^6.1.1
 
 dev_dependencies:
   flutter_test:

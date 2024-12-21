@@ -6,7 +6,6 @@ import 'package:beacon/beacon.dart';
 import 'package:beacon/src/config/theme.dart';
 import 'package:beacon/src/presentation/widgets/http_call_widget.dart';
 import 'package:beacon/src/presentation/widgets/injil_theme_wrapper.dart';
-import 'package:beacon/src/presentation/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
@@ -17,8 +16,13 @@ class BeaconScreeen extends StatelessWidget {
   Widget build(BuildContext context) {
     final _beaconConfig = BeaconConfigurationProvider.of(context)?.configuration;
 
-    return _BeaconView(
-      configuration: _beaconConfig!,
+    return PopScope(
+      onPopInvokedWithResult: (didPop, _) {
+        _beaconConfig.setUserOnBeaconScreen(false);
+      },
+      child: _BeaconView(
+        configuration: _beaconConfig!,
+      ),
     );
   }
 }

@@ -4,6 +4,15 @@ import 'package:beacon/src/presentation/beacon_screen.dart';
 import 'package:flutter/cupertino.dart';
 
 abstract class BeaconConfiguration {
+  // FUCKING [NavigatorState] DOESN'T ALLOW TO WORK WITH HISTORY
+  bool _isOpen = false;
+  // Cheking if user is on Beacon
+  bool get userOnBeaconScreen => _isOpen;
+  // Setting user on Beacon
+  void setUserOnBeaconScreen(bool value) {
+    _isOpen = value;
+  }
+
   /// A repository for managing beacon-related data and operations.
   BeaconRepository get repo;
 
