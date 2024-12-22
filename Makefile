@@ -1,3 +1,8 @@
+publish:
+	cd packages/beacon && dart pub publish
+	cd packages/beacon_dio_adapter && dart pub publish
+	cd packages/beacon_mobile_inspector && dart pub publish
+
 version:
 	cd packages/beacon && cider bump patch
 	cd packages/beacon_dio_adapter && cider bump patch
