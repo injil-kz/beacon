@@ -25,6 +25,10 @@ class BeaconMobileInspector {
     }
   }
 
+  void stopShakeListening() {
+    shakeDetector.stopListening();
+  }
+
   void _onShake() {
     if (configuration.userOnBeaconScreen) {
       return;
