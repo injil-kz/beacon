@@ -16,5 +16,8 @@ pub_analyze:
 get:
 	dart pub get
 
+fix:
+	dart fix --apply
+
 format:
 	dart format . --line-length=120

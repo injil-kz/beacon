@@ -2,7 +2,6 @@ import 'package:beacon/beacon.dart';
 import 'package:beacon_mobile_inspector/beacon_mobile_inspector.dart';
 import 'package:example/service/navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 void main() {
   final configuration = DefaultBeaconConfiguration();

@@ -4,7 +4,6 @@ import 'package:beacon/beacon.dart';
 import 'package:beacon/src/config/theme.dart';
 import 'package:beacon/src/presentation/widgets/body_display_widget.dart';
 import 'package:beacon/src/presentation/widgets/json_describe_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ResponseView extends StatelessWidget {
