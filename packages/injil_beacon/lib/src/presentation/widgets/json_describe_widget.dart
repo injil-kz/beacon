@@ -2,10 +2,10 @@
 
 import 'dart:convert';
 
+import 'package:injil_beacon/injil_beacon.dart';
 import 'package:injil_beacon/src/presentation/widgets/body_display_widget.dart';
 import 'package:injil_beacon/src/presentation/widgets/injil_theme_wrapper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class JsonDescribeWidget extends StatelessWidget {
   const JsonDescribeWidget({required this.json, super.key});
@@ -18,7 +18,7 @@ class JsonDescribeWidget extends StatelessWidget {
       child: Material(
         child: InkWell(
           onLongPress: () async {
-            await Clipboard.setData(ClipboardData(text: jsonEncode(json)));
+            BeaconConfigurationProvider.of(context)?.copyToClipboard(jsonEncode(json));
             BeaconToastNotifier.of(context)?.addToast(
               'Copied to Clipboard',
               BeaconToastType.success,

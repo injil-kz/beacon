@@ -7,8 +7,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-import 'package:flutter/services.dart';
-
 class HttpCallWidget extends StatelessWidget {
   const HttpCallWidget({
     required this.httpCall,
@@ -22,7 +20,7 @@ class HttpCallWidget extends StatelessWidget {
     final uri = Uri.parse(httpCall.request.path);
     return ListTile(
       onLongPress: () async {
-        await Clipboard.setData(ClipboardData(text: httpCall.request.cURL));
+        BeaconConfigurationProvider.of(context)?.copyToClipboard(httpCall.request.cURL);
         BeaconToastNotifier.of(context)?.addToast(
           'Copied to Clipboard',
           BeaconToastType.success,

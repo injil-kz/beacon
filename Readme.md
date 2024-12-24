@@ -1,6 +1,6 @@
 # Beacon Package
 
-The Beacon package is a Flutter plugin that provides functionalities for beacon detection and interaction. This package includes a core beacon package and a Dio adapter for network requests.
+The Beacon package is a Flutter plugin that provides functionalities loggin HTTP Calls
 
 ## Features
 
@@ -13,8 +13,7 @@ To use this package, add the following dependencies to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  beacon: ^1.0.0
-  beacon_dio_adapter: ^1.0.0
+  beacon: latest
 ```
 
 ## Usage

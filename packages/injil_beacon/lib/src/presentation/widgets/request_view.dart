@@ -6,7 +6,6 @@ import 'package:injil_beacon/src/presentation/widgets/body_display_widget.dart';
 import 'package:injil_beacon/src/presentation/widgets/injil_theme_wrapper.dart';
 import 'package:injil_beacon/src/presentation/widgets/json_describe_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class RequestView extends StatelessWidget {
   const RequestView({required this.httpCall, super.key});
@@ -38,7 +37,7 @@ class RequestView extends StatelessWidget {
                 TextButton(
                   child: Text('Copy cURL'),
                   onPressed: () async {
-                    await Clipboard.setData(ClipboardData(text: httpCall.request.cURL));
+                    BeaconConfigurationProvider.of(context)?.copyToClipboard(httpCall.request.cURL);
                     BeaconToastNotifier.of(context)?.addToast(
                       'Copied to Clipboard',
                       BeaconToastType.success,
