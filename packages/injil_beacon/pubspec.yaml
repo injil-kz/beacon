@@ -1,19 +1,25 @@
-name: beacon_dio_adapter
-description: "Dio Adapter for Beacon"
+name: injil_beacon
+description: Beacon is a simple and lightweight HTTP Logger for Dart and Flutter.
 version: 1.0.2
 homepage: https://injil.kz
 
 environment:
   sdk: ^3.6.0
+  flutter: ">=3.27.0"
+
 resolution: workspace
 
 dependencies:
   flutter:
     sdk: flutter
-  dio: ^5.7.0
-  injil_beacon: ^1.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   cider: ^0.2.8
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/beacon_logo.png

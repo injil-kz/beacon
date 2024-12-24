@@ -1,15 +1,15 @@
 publish:
-	cd packages/beacon && dart pub publish
+	cd packages/injil_beacon && dart pub publish
 	cd packages/beacon_dio_adapter && dart pub publish
 	cd packages/beacon_mobile_inspector && dart pub publish
 
 version:
-	cd packages/beacon && cider bump patch
+	cd packages/injil_beacon && cider bump patch
 	cd packages/beacon_dio_adapter && cider bump patch
 	cd packages/beacon_mobile_inspector && cider bump patch
 
 pub_analyze:
-	cd packages/beacon && flutter pub publish --dry-run
+	cd packages/injil_beacon && flutter pub publish --dry-run
 	cd packages/beacon_dio_adapter && flutter pub publish --dry-run
 	cd packages/beacon_mobile_inspector && flutter pub publish --dry-run
 

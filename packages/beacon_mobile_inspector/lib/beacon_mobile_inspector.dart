@@ -1,4 +1,4 @@
-import 'package:beacon/beacon.dart';
+import 'package:injil_beacon/injil_beacon.dart';
 import 'package:beacon_mobile_inspector/src/data/shake_detector.dart';
 import 'package:flutter/material.dart';
 

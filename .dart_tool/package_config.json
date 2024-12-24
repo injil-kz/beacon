@@ -524,8 +524,8 @@
       "languageVersion": "3.6"
     },
     {
-      "name": "beacon",
-      "rootUri": "../packages/beacon",
+      "name": "injil_beacon",
+      "rootUri": "../packages/injil_beacon",
       "packageUri": "lib/",
       "languageVersion": "3.6"
     },
@@ -548,7 +548,7 @@
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2024-12-22T18:24:10.929008Z",
+  "generated": "2024-12-24T20:36:27.946411Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
   "flutterRoot": "file:///Users/yerassylmaikhanov/fvm/versions/3.27.0",

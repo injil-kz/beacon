@@ -12,7 +12,7 @@ resolution: workspace
 dependencies:
   flutter:
     sdk: flutter
-  beacon: ^1.0.1
+  injil_beacon: ^1.0.1
   sensors_plus: ^6.1.1
 
 dev_dependencies:

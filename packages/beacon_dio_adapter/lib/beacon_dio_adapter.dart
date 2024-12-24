@@ -3,7 +3,7 @@ library beacon_dio_adapter;
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:beacon/beacon.dart';
+import 'package:injil_beacon/injil_beacon.dart';
 import 'package:dio/dio.dart';
 
 class BeaconDioAdapter extends QueuedInterceptor {

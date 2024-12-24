@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:beacon/beacon.dart';
+import 'package:injil_beacon/injil_beacon.dart';
 import 'package:example/service/rest_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -4,10 +4,10 @@ environment:
   sdk: ^3.6.0
 
 dependencies: 
-  beacon: ^1.0.1
+  injil_beacon: ^1.0.1
    
 workspace:
-  - packages/beacon
+  - packages/injil_beacon
   - packages/beacon_dio_adapter
   - packages/beacon_mobile_inspector
   - example

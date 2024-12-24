@@ -24,7 +24,7 @@ dependencies:
 Import the beacon package and use it to detect and interact with beacons:
 
 ```dart
-import 'package:beacon/beacon.dart';
+import 'package:injil_beacon/beacon.dart';
 
 void main() {
   // Initialize the beacon manager
@@ -40,7 +40,7 @@ void main() {
 Import the beacon Dio adapter package and use it for network requests:
 
 ```dart
-import 'package:beacon_dio_adapter/beacon_dio_adapter.dart';
+import 'package:injil_beacon_dio_adapter/beacon_dio_adapter.dart';
 import 'package:dio/dio.dart';
 
 void main() {

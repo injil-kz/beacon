@@ -1,4 +1,4 @@
-import 'package:beacon/beacon.dart';
+import 'package:injil_beacon/injil_beacon.dart';
 import 'package:beacon_dio_adapter/beacon_dio_adapter.dart';
 import 'package:dio/dio.dart';
 
