@@ -13,6 +13,11 @@ pub_analyze:
 	cd packages/beacon_dio_adapter && flutter pub publish --dry-run
 	cd packages/beacon_mobile_inspector && flutter pub publish --dry-run
 
+release:
+	cd packages/injil_beacon && flutter pub publish -f
+	cd packages/beacon_dio_adapter && flutter pub publish -f
+	cd packages/beacon_mobile_inspector && flutter pub publish -f
+
 get:
 	dart pub get
 
