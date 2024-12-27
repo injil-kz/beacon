@@ -16,7 +16,10 @@ class BeaconDioAdapter extends QueuedInterceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     final generatedId = generateRandomId(11);
-    options.headers['x-request-id'] = generatedId;
+    final xExistingHeader = options.headers['x-request-id'];
+    if (xExistingHeader == null) {
+      options.headers['x-request-id'] = generatedId;
+    }
     beaconConfiguration.repo.saveRequest(
       BeaconHttpRequest(
         method: BeaconMethodParser.fromString(options.method),
