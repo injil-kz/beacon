@@ -6,7 +6,7 @@ The Beacon package is a Flutter plugin that provides functionalities for loggin 
 ## Features
 
 - Loggin Request/Response/Error
-- Good UI for Test
+- Good UI/UX for Developers and QA Engineers. [We love our clients :)]
 - Zero dependecies
 - Adapters for different HTTP Clients
 - Inspectors for mobile/desktop/web platforms
