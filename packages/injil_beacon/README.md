@@ -1,67 +1,107 @@
-# Beacon
+# Beacon Package
 
-[![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
-[![Powered by Mason](https://img.shields.io/endpoint?url=https%3A%2F%2Ftinyurl.com%2Fmason-badge)](https://github.com/felangel/mason)
-[![License: MIT][license_badge]][license_link]
+The Beacon package is a Flutter plugin that provides functionalities for loggin HTTP Calls
 
-A Very Good Project created by Very Good CLI.
 
-## Installation 💻
+## Features
 
-**❗ In order to start using Beacon you must have the [Flutter SDK][flutter_install_link] installed on your machine.**
+- Loggin Request/Response/Error
+- Good UI for Test
+- Zero dependecies
+- Adapters for different HTTP Clients
+- Inspectors for mobile/desktop/web platforms
 
-Install via `flutter pub add`:
+| HTTP Calls | Request | Response |
+|------------|---------|----------|
+| ![HTTP Calls](https://github.com/injil-kz/beacon/blob/main/images/http_calls.png?raw=true) | ![Request](https://github.com/injil-kz/beacon/blob/main/images/request.png?raw=true) | ![Response](https://github.com/injil-kz/beacon/blob/main/images/response.png?raw=true) 
+-----------
+![ShakeToOpen](https://github.com/injil-kz/beacon/blob/main/images/shake.gif?raw=true)
+-----------
+![ShakeToOpen](https://github.com/injil-kz/beacon/blob/main/images/shake.gif?raw=true)
 
-```sh
-dart pub add beacon
+## Getting Started
+
+To use this package, add the following dependencies to your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  beacon: latest
 ```
 
----
+## Usage
 
-## Continuous Integration 🤖
+### Beacon
 
-Beacon comes with a built-in [GitHub Actions workflow][github_actions_link] powered by [Very Good Workflows][very_good_workflows_link] but you can also add your preferred CI/CD solution.
+Import the beacon package and use it to detect and interact with beacons:
 
-Out of the box, on each pull request and push, the CI `formats`, `lints`, and `tests` the code. This ensures the code remains consistent and behaves correctly as you add functionality or make changes. The project uses [Very Good Analysis][very_good_analysis_link] for a strict set of analysis options used by our team. Code coverage is enforced using the [Very Good Workflows][very_good_coverage_link].
+```dart
+import 'package:injil_beacon/injil_beacon.dart';
 
----
+void main() {
+  final configuration = DefaultBeaconConfiguration();
+  // get Router of your application
+  final router = AppRouter();
 
-## Running Tests 🧪
+  final beaconInspector = BeaconMobileInspector(
+    // Provide BeaconConfiguration for Inspector
+    configuration: configuration,
+    // Provide navigatorKey for Inspector
+    navigatorKey: router.navigatorKey,
+    // shake smartphone to open Inspector
+    shakeToOpen: true,
+  );
+  // Initialize BeaconInspector
+  beaconInspector.init();
 
-For first time users, install the [very_good_cli][very_good_cli_link]:
-
-```sh
-dart pub global activate very_good_cli
+  runApp(
+    MyApp(
+      configuration: configuration,
+      router: router,
+    ),
+  );
+}
 ```
 
-To run all unit tests:
+### Beacon Dio Adapter
 
-```sh
-very_good test --coverage
+Import the beacon Dio adapter package and use it for network requests:
+
+```dart
+import 'package:beacon_mobile_inspector/beacon_mobile_inspector.dart';
+import 'package:flutter/material.dart';
+
+
+
+class MyApp extends StatelessWidget {
+  const MyApp({
+    super.key,
+    required this.configuration,
+    required this.router,
+  });
+
+  final BeaconConfiguration configuration;
+  final AppRouter router;
+  @override
+  Widget build(BuildContext context) {
+    return BeaconConfigurationProvider(
+      configuration: configuration,
+      child: MaterialApp.router(
+        routerConfig: router.config(),
+        debugShowCheckedModeBanner: false,
+      ),
+    );
+  }
+}
 ```
 
-To view the generated coverage report you can use [lcov](https://github.com/linux-test-project/lcov).
+## Example
 
-```sh
-# Generate Coverage Report
-genhtml coverage/lcov.info -o coverage/
+Check out the [example](example) directory for a complete example of how to use this package.
 
-# Open Coverage Report
-open coverage/index.html
-```
+## Contributing
 
-[flutter_install_link]: https://docs.flutter.dev/get-started/install
-[github_actions_link]: https://docs.github.com/en/actions/learn-github-actions
-[license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
-[license_link]: https://opensource.org/licenses/MIT
-[logo_black]: https://raw.githubusercontent.com/VGVentures/very_good_brand/main/styles/README/vgv_logo_black.png#gh-light-mode-only
-[logo_white]: https://raw.githubusercontent.com/VGVentures/very_good_brand/main/styles/README/vgv_logo_white.png#gh-dark-mode-only
-[mason_link]: https://github.com/felangel/mason
-[very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
-[very_good_analysis_link]: https://pub.dev/packages/very_good_analysis
-[very_good_cli_link]: https://pub.dev/packages/very_good_cli
-[very_good_coverage_link]: https://github.com/marketplace/actions/very-good-coverage
-[very_good_ventures_link]: https://verygood.ventures
-[very_good_ventures_link_light]: https://verygood.ventures#gh-light-mode-only
-[very_good_ventures_link_dark]: https://verygood.ventures#gh-dark-mode-only
-[very_good_workflows_link]: https://github.com/VeryGoodOpenSource/very_good_workflows
+Contributions are welcome! Please see the [contributing guidelines](CONTRIBUTING.md) for more information.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
