@@ -31,7 +31,9 @@ To use this package, add the following dependencies to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  beacon: latest
+  injil_beacon: latest
+  beacon_dio_adapter: latest
+  beacon_mobile_inspector: latest
 ```
 
 ## Usage
@@ -66,17 +68,6 @@ void main() {
     ),
   );
 }
-```
-
-### Beacon Dio Adapter
-
-Import the beacon Dio adapter package and use it for network requests:
-
-```dart
-import 'package:beacon_mobile_inspector/beacon_mobile_inspector.dart';
-import 'package:flutter/material.dart';
-
-
 
 class MyApp extends StatelessWidget {
   const MyApp({
@@ -98,6 +89,21 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+```
+
+### Beacon Dio Adapter
+
+Import the beacon Dio adapter package and use it for network requests:
+
+```dart
+import 'package:injil_beacon/injil_beacon.dart';
+import 'package:beacon_dio_adapter/beacon_dio_adapter.dart';
+
+final configuration = DefaultBeaconConfiguration();
+ 
+_dio?.interceptors.add(
+  BeaconDioAdapter(beaconConfiguration: configuration),
+);
 ```
 
 ## Example
