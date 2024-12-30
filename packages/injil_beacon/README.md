@@ -13,11 +13,17 @@ The Beacon package is a Flutter plugin that provides functionalities for loggin 
 
 | HTTP Calls | Request | Response |
 |------------|---------|----------|
-| ![HTTP Calls](https://github.com/injil-kz/beacon/blob/main/images/http_calls.png?raw=true) | ![Request](https://github.com/injil-kz/beacon/blob/main/images/request.png?raw=true) | ![Response](https://github.com/injil-kz/beacon/blob/main/images/response.png?raw=true) 
------------
-![ShakeToOpen](https://github.com/injil-kz/beacon/blob/main/images/shake.gif?raw=true)
------------
-![ShakeToOpen](https://github.com/injil-kz/beacon/blob/main/images/shake.gif?raw=true)
+| ![HTTP Calls](https://github.com/injil-kz/beacon/blob/main/images/http_calls.png?raw=true) | ![Request](https://github.com/injil-kz/beacon/blob/main/images/request.png?raw=true) | ![Response](https://github.com/injil-kz/beacon/blob/main/images/response.png?raw=true)
+-------
+
+| Shake to Open |
+|------------|
+| ![ShakeToOpen](https://github.com/injil-kz/beacon/blob/main/images/shake.gif?raw=true) |
+
+
+| Easy copy cURL | Easy copy Body/Headers/QueryParams |
+|---------|---------|
+| ![Easy copy cURL](https://github.com/injil-kz/beacon/blob/main/images/cURL.gif?raw=true) | ![Easy copy cURL](https://github.com/injil-kz/beacon/blob/main/images/json.gif?raw=true) |
 
 ## Getting Started
 
