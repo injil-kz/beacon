@@ -9,7 +9,7 @@
     },
     {
       "name": "_macros",
-      "rootUri": "file:///Users/yerassylmaikhanov/fvm/versions/3.27.0/bin/cache/dart-sdk/pkg/_macros",
+      "rootUri": "file:///Users/yerassylmaikhanov/fvm/versions/3.27.1/bin/cache/dart-sdk/pkg/_macros",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -189,19 +189,19 @@
     },
     {
       "name": "flutter",
-      "rootUri": "file:///Users/yerassylmaikhanov/fvm/versions/3.27.0/packages/flutter",
+      "rootUri": "file:///Users/yerassylmaikhanov/fvm/versions/3.27.1/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "flutter_test",
-      "rootUri": "file:///Users/yerassylmaikhanov/fvm/versions/3.27.0/packages/flutter_test",
+      "rootUri": "file:///Users/yerassylmaikhanov/fvm/versions/3.27.1/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "flutter_web_plugins",
-      "rootUri": "file:///Users/yerassylmaikhanov/fvm/versions/3.27.0/packages/flutter_web_plugins",
+      "rootUri": "file:///Users/yerassylmaikhanov/fvm/versions/3.27.1/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -399,7 +399,7 @@
     },
     {
       "name": "sky_engine",
-      "rootUri": "file:///Users/yerassylmaikhanov/fvm/versions/3.27.0/bin/cache/pkg/sky_engine",
+      "rootUri": "file:///Users/yerassylmaikhanov/fvm/versions/3.27.1/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -548,10 +548,10 @@
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2024-12-30T18:42:08.460727Z",
+  "generated": "2025-01-14T14:37:53.093139Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
-  "flutterRoot": "file:///Users/yerassylmaikhanov/fvm/versions/3.27.0",
-  "flutterVersion": "3.27.0",
+  "flutterRoot": "file:///Users/yerassylmaikhanov/fvm/versions/3.27.1",
+  "flutterVersion": "3.27.1",
   "pubCache": "file:///Users/yerassylmaikhanov/.pub-cache"
 }

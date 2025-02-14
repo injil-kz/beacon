@@ -39,7 +39,8 @@ class ShakeDetector {
     // Calculate the Euclidean norm of the acceleration vector.
     final double resultantAcceleration = sqrt(pow(normalizedX, 2) + pow(normalizedY, 2) + pow(normalizedZ, 2));
 
-    if (resultantAcceleration > shakeThresholdGravity) {
+    if (resultantAcceleration > shakeThresholdGravity + 0.5) {
+      // Increased threshold
       final int currentTimeMillis = DateTime.now().millisecondsSinceEpoch;
 
       // Throttle shake events to prevent excessive triggering.
