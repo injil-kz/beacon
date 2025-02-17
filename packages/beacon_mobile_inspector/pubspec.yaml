@@ -1,6 +1,6 @@
 name: beacon_mobile_inspector
 description: "Beacon Package for Mobile Devices"
-version: 1.0.4
+version: 1.0.5
 homepage: https://injil.kz
 
 environment:

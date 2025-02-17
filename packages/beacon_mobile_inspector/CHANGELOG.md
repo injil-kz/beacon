@@ -1,3 +1,7 @@
+# 1.0.5
+
+- Changed Hyroscope
+  
 # 1.0.4
 
 - Fixed GPT text in readme
