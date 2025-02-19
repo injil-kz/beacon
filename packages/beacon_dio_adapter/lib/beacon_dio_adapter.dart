@@ -6,7 +6,7 @@ import 'dart:math';
 import 'package:injil_beacon/injil_beacon.dart';
 import 'package:dio/dio.dart';
 
-class BeaconDioAdapter extends QueuedInterceptor {
+class BeaconDioAdapter extends Interceptor {
   final BeaconConfiguration beaconConfiguration;
 
   BeaconDioAdapter({
@@ -23,7 +23,7 @@ class BeaconDioAdapter extends QueuedInterceptor {
     beaconConfiguration.repo.saveRequest(
       BeaconHttpRequest(
         method: BeaconMethodParser.fromString(options.method),
-        path: options.path.toString(),
+        path: options.uri.toString(),
         timestampInMilliseconds: DateTime.now().millisecondsSinceEpoch.toDouble(),
         body: options.data,
         query: options.queryParameters,

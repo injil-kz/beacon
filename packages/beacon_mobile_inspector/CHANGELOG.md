@@ -1,3 +1,7 @@
+# 1.0.6
+
+- Fixed Dio Logger
+
 # 1.0.5
 
 - Changed Hyroscope
