@@ -1,6 +1,6 @@
 name: beacon_dio_adapter
 description: "Dio Adapter for Beacon"
-version: 1.0.5
+version: 1.0.6
 homepage: https://injil.kz
 
 environment:
