@@ -45,7 +45,7 @@ ThemeData get injilTheme => ThemeData(
       chipTheme: const ChipThemeData(
         padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: _backgroundColor,
         shadowColor: Colors.white.withOpacity(0.8),
         elevation: 2,

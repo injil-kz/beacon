@@ -10,14 +10,14 @@ environment:
 resolution: workspace
 
 dependencies:
+  ansicolor: ^2.0.3
   flutter:
     sdk: flutter
 
 dev_dependencies:
+  cider: ^0.2.8
   flutter_test:
     sdk: flutter
-  cider: ^0.2.8
-
 
 flutter:
   uses-material-design: true

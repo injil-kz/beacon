@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'dart:ui';
+import 'package:ansicolor/ansicolor.dart';
 
 /// Enum representing HTTP methods.
 ///
@@ -54,6 +55,35 @@ extension BeaconMethodParser on BeaconHttpMethod {
         return const Color(0xFF795548);
     }
   }
+
+  AnsiPen get pen {
+    switch (this) {
+      case BeaconHttpMethod.GET:
+        return AnsiPen()..green();
+      case BeaconHttpMethod.POST:
+        return AnsiPen()..blue();
+      case BeaconHttpMethod.PUT:
+        return AnsiPen()..yellow();
+      case BeaconHttpMethod.DELETE:
+        return AnsiPen()..red();
+      case BeaconHttpMethod.PATCH:
+        return AnsiPen()
+          ..rgb(
+            r: 156,
+            g: 39,
+            b: 176,
+          );
+      case BeaconHttpMethod.HEAD:
+        return AnsiPen()..magenta();
+      case BeaconHttpMethod.OPTIONS:
+        return AnsiPen()
+          ..rgb(
+            r: 121,
+            g: 85,
+            b: 72,
+          );
+    }
+  }
 }
 
 extension StatusColor on int {
@@ -66,6 +96,18 @@ extension StatusColor on int {
       return const Color(0xFFFF9800);
     } else {
       return const Color(0xFFF44336);
+    }
+  }
+
+  AnsiPen get pen {
+    if (this >= 200 && this < 300) {
+      return AnsiPen()..green();
+    } else if (this >= 300 && this < 400) {
+      return AnsiPen()..blue();
+    } else if (this >= 400 && this < 500) {
+      return AnsiPen()..yellow();
+    } else {
+      return AnsiPen()..red();
     }
   }
 }

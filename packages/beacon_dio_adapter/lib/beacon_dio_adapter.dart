@@ -66,6 +66,18 @@ class BeaconDioAdapter extends Interceptor {
         xRequestId: generatedId,
       ),
     );
+
+    beaconConfiguration.repo.saveResponse(
+      BeaconHttpResponse(
+        statusCode: exp.response?.statusCode ?? 0,
+        timestampInMilliseconds: DateTime.now().millisecondsSinceEpoch.toDouble(),
+        body: exp.response?.data,
+        headers: exp.response?.headers.map,
+        xRequestId: generatedId,
+        size: exp.response?.data == null ? 0 : utf8.encode(exp.response?.data?.toString() ?? '').length,
+      ),
+    );
+
     super.onError(exp, handler);
   }
 
