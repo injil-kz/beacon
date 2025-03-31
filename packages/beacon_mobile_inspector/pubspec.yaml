@@ -1,6 +1,6 @@
 name: beacon_mobile_inspector
 description: "Beacon Package for Mobile Devices"
-version: 1.0.6
+version: 1.0.7
 homepage: https://injil.kz
 
 environment:
@@ -12,11 +12,11 @@ resolution: workspace
 dependencies:
   flutter:
     sdk: flutter
-  injil_beacon: ^1.0.1
+  injil_beacon: ^1.0.7
   sensors_plus: ^6.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  cider: ^0.2.8
+
 
