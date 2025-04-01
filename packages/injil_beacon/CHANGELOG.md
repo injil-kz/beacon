@@ -1,3 +1,7 @@
+# 1.0.8
+
+- fixed List response
+
 # 1.0.7
 
 - Added HTTP log output

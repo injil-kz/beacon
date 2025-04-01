@@ -52,19 +52,35 @@ class LogsPrintingService {
       keyPen: headerNamePen,
       valuePen: headerValuePen,
     );
-    _mapPrinter(
-      name: 'Body',
-      map: response.body,
-      framePen: responseFramePen,
-      keyPen: bodyNamePen,
-      valuePen: bodyValuePen,
-    );
+    if (response.body is Map) {
+      _mapPrinter(
+        name: 'Body',
+        map: response.body,
+        framePen: responseFramePen,
+        keyPen: bodyNamePen,
+        valuePen: bodyValuePen,
+      );
+    } else if (response.body is List) {
+      _listPrinter(
+        name: 'Body',
+        list: response.body,
+        framePen: responseFramePen,
+        keyPen: bodyNamePen,
+        valuePen: bodyValuePen,
+      );
+    } else {
+      print(responseFramePen('║ Body:'));
+      print(responseFramePen('║ ┌──────────────────────────────────────────────────'));
+      print(responseFramePen('║ ' + response.body.toString()));
+      print(responseFramePen('║ └──────────────────────────────────────────────────'));
+    }
+
     print(responseFramePen('╚══════════════════════════════════════════════════════════════'));
   }
 
   static void logError(dynamic error) {
     print(errorFramePen('╔════════════════════════ HTTP Error ══════════════════════════'));
-    print('║ Error: ${error}');
+    print(errorFramePen('║ Error: ${error}'));
     print(errorFramePen('╚══════════════════════════════════════════════════════════════'));
   }
 
@@ -129,5 +145,33 @@ class LogsPrintingService {
       print(framePen('║ └──────────────────────────────────────────────────'));
     else
       print(framePen('║ │ ' * depth));
+  }
+
+  static void _listPrinter({
+    required String name,
+    required List<dynamic> list,
+    required AnsiPen framePen,
+    required AnsiPen keyPen,
+    required AnsiPen valuePen,
+  }) {
+    print(framePen('║ $name:'));
+    print(framePen('║ ┌──────────────────────────────────────────────────'));
+    for (final subItem in list) {
+      if (subItem is Map) {
+        _mapPrinter(
+          name: '',
+          map: subItem as Map<String, dynamic>,
+          framePen: framePen,
+          keyPen: keyPen,
+          valuePen: valuePen,
+          depth: 1,
+          hasFrame: false,
+          hasTitle: false,
+        );
+      } else {
+        print(framePen('║ │ ') + valuePen(subItem.toString()));
+      }
+    }
+    print(framePen('║ └──────────────────────────────────────────────────'));
   }
 }

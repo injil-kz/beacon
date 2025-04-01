@@ -1,6 +1,6 @@
 name: injil_beacon
 description: Beacon is a simple and lightweight HTTP Logger for Dart and Flutter.
-version: 1.0.7
+version: 1.0.8
 homepage: https://injil.kz
 
 environment:
