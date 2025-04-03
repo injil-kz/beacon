@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:ansicolor/ansicolor.dart' show AnsiPen;
 import 'package:injil_beacon/injil_beacon.dart';
 
@@ -12,40 +14,40 @@ class LogsPrintingService {
   static final AnsiPen bodyValuePen = AnsiPen()..white();
 
   static void logRequest(BeaconHttpRequest request) {
-    print(requestFramePen('╔════════════════════════ HTTP Request ════════════════════════'));
-    print(requestFramePen('║ Method: ') + request.method.pen(request.method.name.toString()));
-    print(requestFramePen('║ URL: ') + urlPen(request.path));
-    _mapPrinter(
+    printLogLine(requestFramePen('╔════════════════════════ HTTP Request ════════════════════════'));
+    printLogLine(requestFramePen('║ Method: ') + request.method.pen(request.method.name.toString()));
+    printLogLine(requestFramePen('║ URL: ') + urlPen(request.path));
+    _mapprinter(
       name: 'Headers',
       map: request.headers,
       framePen: requestFramePen,
       keyPen: headerNamePen,
       valuePen: headerValuePen,
     );
-    _mapPrinter(
+    _mapprinter(
       name: 'Query Parameters',
       map: request.query,
       framePen: requestFramePen,
       keyPen: bodyNamePen,
       valuePen: bodyValuePen,
     );
-    _mapPrinter(
+    _mapprinter(
       name: 'Body',
       map: request.body,
       framePen: requestFramePen,
       keyPen: bodyNamePen,
       valuePen: bodyValuePen,
     );
-    print(requestFramePen('╚══════════════════════════════════════════════════════════════'));
+    printLogLine(requestFramePen('╚══════════════════════════════════════════════════════════════'));
   }
 
   static void logResponse(BeaconHttpResponse response) {
-    print(responseFramePen('╔════════════════════════ HTTP Response ═══════════════════════'));
-    print(responseFramePen('║ Status Code: ') + response.statusCode.pen(response.statusCode));
-    print(responseFramePen(
+    printLogLine(responseFramePen('╔════════════════════════ HTTP Response ═══════════════════════'));
+    printLogLine(responseFramePen('║ Status Code: ') + response.statusCode.pen(response.statusCode));
+    printLogLine(responseFramePen(
         '║ Timestamp: ${DateTime.fromMillisecondsSinceEpoch(response.timestampInMilliseconds.toInt()).toIso8601String()}'));
-    print(responseFramePen('║ ResponseTime: ${response.responseTimeInMilliseconds} (ms)'));
-    _mapPrinter(
+    printLogLine(responseFramePen('║ ResponseTime: ${response.responseTimeInMilliseconds} (ms)'));
+    _mapprinter(
       name: 'Headers',
       map: response.headers,
       framePen: responseFramePen,
@@ -53,7 +55,7 @@ class LogsPrintingService {
       valuePen: headerValuePen,
     );
     if (response.body is Map) {
-      _mapPrinter(
+      _mapprinter(
         name: 'Body',
         map: response.body,
         framePen: responseFramePen,
@@ -61,7 +63,7 @@ class LogsPrintingService {
         valuePen: bodyValuePen,
       );
     } else if (response.body is List) {
-      _listPrinter(
+      _listprinter(
         name: 'Body',
         list: response.body,
         framePen: responseFramePen,
@@ -69,22 +71,22 @@ class LogsPrintingService {
         valuePen: bodyValuePen,
       );
     } else {
-      print(responseFramePen('║ Body:'));
-      print(responseFramePen('║ ┌──────────────────────────────────────────────────'));
-      print(responseFramePen('║ ' + response.body.toString()));
-      print(responseFramePen('║ └──────────────────────────────────────────────────'));
+      printLogLine(responseFramePen('║ Body:'));
+      printLogLine(responseFramePen('║ ┌──────────────────────────────────────────────────'));
+      printLogLine(responseFramePen('║ ' + response.body.toString()));
+      printLogLine(responseFramePen('║ └──────────────────────────────────────────────────'));
     }
 
-    print(responseFramePen('╚══════════════════════════════════════════════════════════════'));
+    printLogLine(responseFramePen('╚══════════════════════════════════════════════════════════════'));
   }
 
   static void logError(dynamic error) {
-    print(errorFramePen('╔════════════════════════ HTTP Error ══════════════════════════'));
-    print(errorFramePen('║ Error: ${error}'));
-    print(errorFramePen('╚══════════════════════════════════════════════════════════════'));
+    printLogLine(errorFramePen('╔════════════════════════ HTTP Error ══════════════════════════'));
+    printLogLine(errorFramePen('║ Error: ${error}'));
+    printLogLine(errorFramePen('╚══════════════════════════════════════════════════════════════'));
   }
 
-  static void _mapPrinter({
+  static void _mapprinter({
     required String name,
     Map<String, dynamic>? map,
     required AnsiPen framePen,
@@ -96,15 +98,15 @@ class LogsPrintingService {
   }) {
     if (hasTitle) {
       if (depth == 1)
-        print(framePen('║ $name:'));
+        printLogLine(framePen('║ $name:'));
       else
-        print(framePen('║ │ ') + keyPen(name) + framePen(':'));
+        printLogLine(framePen('║ │ ') + keyPen(name) + framePen(':'));
     } else {}
-    if (hasFrame) print(framePen('║ ┌──────────────────────────────────────────────────'));
+    if (hasFrame) printLogLine(framePen('║ ┌──────────────────────────────────────────────────'));
     if (map != null && map.isNotEmpty)
       map.forEach((key, value) {
         if (value is Map) {
-          _mapPrinter(
+          _mapprinter(
             name: key,
             map: value as Map<String, dynamic>,
             framePen: framePen,
@@ -116,10 +118,10 @@ class LogsPrintingService {
           return;
         }
         if (value is List) {
-          print(framePen('║ │ ' * depth) + keyPen(key) + ':');
+          printLogLine(framePen('║ │ ' * depth) + keyPen(key) + ':');
           for (final subItem in value) {
             if (subItem is Map) {
-              _mapPrinter(
+              _mapprinter(
                 name: key,
                 map: subItem as Map<String, dynamic>,
                 framePen: framePen,
@@ -130,35 +132,35 @@ class LogsPrintingService {
                 hasTitle: false,
               );
             } else {
-              print(framePen('║ │ ' * (depth + 1)) + valuePen(subItem.toString()));
+              printLogLine(framePen('║ │ ' * (depth + 1)) + valuePen(subItem.toString()));
             }
           }
 
           return;
         }
 
-        print(framePen('║ │ ' * depth) + keyPen(key) + ': ' + valuePen(value.toString()));
+        printLogLine(framePen('║ │ ' * depth) + keyPen(key) + ': ' + valuePen(value.toString()));
       });
     else
-      print(framePen('║ │ ' * depth) + '<empty>');
+      printLogLine(framePen('║ │ ' * depth) + '<empty>');
     if (hasFrame)
-      print(framePen('║ └──────────────────────────────────────────────────'));
+      printLogLine(framePen('║ └──────────────────────────────────────────────────'));
     else
-      print(framePen('║ │ ' * depth));
+      printLogLine(framePen('║ │ ' * depth));
   }
 
-  static void _listPrinter({
+  static void _listprinter({
     required String name,
     required List<dynamic> list,
     required AnsiPen framePen,
     required AnsiPen keyPen,
     required AnsiPen valuePen,
   }) {
-    print(framePen('║ $name:'));
-    print(framePen('║ ┌──────────────────────────────────────────────────'));
+    printLogLine(framePen('║ $name:'));
+    printLogLine(framePen('║ ┌──────────────────────────────────────────────────'));
     for (final subItem in list) {
       if (subItem is Map) {
-        _mapPrinter(
+        _mapprinter(
           name: '',
           map: subItem as Map<String, dynamic>,
           framePen: framePen,
@@ -169,9 +171,11 @@ class LogsPrintingService {
           hasTitle: false,
         );
       } else {
-        print(framePen('║ │ ') + valuePen(subItem.toString()));
+        printLogLine(framePen('║ │ ') + valuePen(subItem.toString()));
       }
     }
-    print(framePen('║ └──────────────────────────────────────────────────'));
+    printLogLine(framePen('║ └──────────────────────────────────────────────────'));
   }
+
+  static void printLogLine(String line) => log(line, name: 'Beacon');
 }

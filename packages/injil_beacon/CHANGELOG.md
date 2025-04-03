@@ -1,3 +1,7 @@
+# 1.0.9
+
+- used log instead of print 
+
 # 1.0.8
 
 - fixed List response
