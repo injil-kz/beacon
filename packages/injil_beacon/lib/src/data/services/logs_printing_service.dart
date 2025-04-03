@@ -31,13 +31,30 @@ class LogsPrintingService {
       keyPen: bodyNamePen,
       valuePen: bodyValuePen,
     );
-    _mapprinter(
-      name: 'Body',
-      map: request.body,
-      framePen: requestFramePen,
-      keyPen: bodyNamePen,
-      valuePen: bodyValuePen,
-    );
+
+    if (request.body is Map) {
+      _mapprinter(
+        name: 'Body',
+        map: request.body,
+        framePen: responseFramePen,
+        keyPen: bodyNamePen,
+        valuePen: bodyValuePen,
+      );
+    } else if (request.body is List) {
+      _listprinter(
+        name: 'Body',
+        list: request.body,
+        framePen: responseFramePen,
+        keyPen: bodyNamePen,
+        valuePen: bodyValuePen,
+      );
+    } else {
+      printLogLine(responseFramePen('║ Body:'));
+      printLogLine(responseFramePen('║ ┌──────────────────────────────────────────────────'));
+      printLogLine(responseFramePen('║ ' + request.body.toString()));
+      printLogLine(responseFramePen('║ └──────────────────────────────────────────────────'));
+    }
+
     printLogLine(requestFramePen('╚══════════════════════════════════════════════════════════════'));
   }
 

@@ -1,3 +1,7 @@
+# 1.0.10
+
+- fixed request body is List or just value
+
 # 1.0.9
 
 - used log instead of print 
