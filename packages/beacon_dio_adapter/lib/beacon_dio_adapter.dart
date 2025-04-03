@@ -3,8 +3,8 @@ library beacon_dio_adapter;
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:injil_beacon/injil_beacon.dart';
 import 'package:dio/dio.dart';
+import 'package:injil_beacon/injil_beacon.dart';
 
 class BeaconDioAdapter extends Interceptor {
   final BeaconConfiguration beaconConfiguration;
@@ -42,6 +42,7 @@ class BeaconDioAdapter extends Interceptor {
     final generatedId = response.requestOptions.headers['x-request-id'];
     beaconConfiguration.repo.saveResponse(
       BeaconHttpResponse(
+        url: response.requestOptions.uri.toString(),
         statusCode: response.statusCode ?? 0,
         timestampInMilliseconds: DateTime.now().millisecondsSinceEpoch.toDouble(),
         body: response.data,
@@ -69,6 +70,7 @@ class BeaconDioAdapter extends Interceptor {
 
     beaconConfiguration.repo.saveResponse(
       BeaconHttpResponse(
+        url: exp.requestOptions.uri.toString(),
         statusCode: exp.response?.statusCode ?? 0,
         timestampInMilliseconds: DateTime.now().millisecondsSinceEpoch.toDouble(),
         body: exp.response?.data,

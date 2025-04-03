@@ -43,6 +43,7 @@ class LogsPrintingService {
 
   static void logResponse(BeaconHttpResponse response) {
     printLogLine(responseFramePen('╔════════════════════════ HTTP Response ═══════════════════════'));
+    printLogLine(responseFramePen('║ URL: ') + response.url);
     printLogLine(responseFramePen('║ Status Code: ') + response.statusCode.pen(response.statusCode));
     printLogLine(responseFramePen(
         '║ Timestamp: ${DateTime.fromMillisecondsSinceEpoch(response.timestampInMilliseconds.toInt()).toIso8601String()}'));

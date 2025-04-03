@@ -28,6 +28,7 @@ import 'package:injil_beacon/src/domain/models/http_message.dart';
 class BeaconHttpResponse extends BeaconHttpMessage {
   /// Constructor for creating a new `BeaconHttpResponse` instance.
   const BeaconHttpResponse({
+    required this.url,
     required this.statusCode,
     required this.headers,
     required this.timestampInMilliseconds,
@@ -60,8 +61,12 @@ class BeaconHttpResponse extends BeaconHttpMessage {
   /// The size of the HTTP response in bytes.
   final int size;
 
+  /// The URL of the HTTP request that generated this response.
+  final String url;
+
   BeaconHttpResponse copyWith({
     int? statusCode,
+    String? url,
     Map<String, dynamic>? headers,
     dynamic body,
     Map<String, dynamic>? cookie,
@@ -71,6 +76,7 @@ class BeaconHttpResponse extends BeaconHttpMessage {
   }) {
     return BeaconHttpResponse(
       statusCode: statusCode ?? this.statusCode,
+      url: url ?? this.url,
       headers: headers ?? this.headers,
       body: body ?? this.body,
       cookie: cookie ?? this.cookie,
