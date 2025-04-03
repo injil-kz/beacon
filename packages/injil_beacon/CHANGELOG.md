@@ -1,3 +1,7 @@
+# 1.0.11
+
+- added saving response if get error
+
 # 1.0.10
 
 - fixed request body is List or just value
