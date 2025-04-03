@@ -49,8 +49,8 @@ class BeaconHttpCall {
     return BeaconHttpCall(
       xRequestId: xRequestId,
       request: newRequest ?? request,
-      response: newResponse,
-      error: newError,
+      response: newResponse ?? this.response,
+      error: newError ?? this.error,
     );
   }
 }
