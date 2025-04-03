@@ -1,3 +1,7 @@
+# 1.0.12
+
+- added URL in terminal response 
+
 # 1.0.11
 
 - added saving response if get error
