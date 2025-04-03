@@ -1,6 +1,6 @@
-import 'package:injil_beacon/injil_beacon.dart';
 import 'package:beacon_dio_adapter/beacon_dio_adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:injil_beacon/injil_beacon.dart';
 
 class RestService {
   Dio? _dio;
@@ -17,7 +17,18 @@ class RestService {
     _dio?.interceptors.add(
       BeaconDioAdapter(beaconConfiguration: DefaultBeaconConfiguration()),
     );
-
+    await _dio!.get('https://httpstat.us/403');
+    print('Error GET');
+    await _dio!.delete(
+      'https://jsonplaceholder.typicode.com/?posts=-1',
+      data: {
+        'id': 1,
+        'title': 'foo',
+        'body': 'bar',
+        'userId': 1,
+      },
+    );
+    print('Error HEAD');
     await _dio!.get(
       'https://jsonplaceholder.typicode.com/posts',
       queryParameters: {
