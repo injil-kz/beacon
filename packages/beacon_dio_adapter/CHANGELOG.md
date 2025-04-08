@@ -1,3 +1,7 @@
+# 1.0.8
+
+- Added HTTP error response logging
+
 # 1.0.7
 
 - Added HTTP log output
