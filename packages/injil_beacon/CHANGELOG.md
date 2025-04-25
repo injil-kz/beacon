@@ -1,3 +1,7 @@
+# 1.0.14
+
+- added updates of xxx-form-urlencoded
+
 # 1.0.13
 
 - added URL in terminal response 
