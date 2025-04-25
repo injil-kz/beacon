@@ -126,8 +126,24 @@ class BodyDisplayWidget extends StatelessWidget {
           ),
         );
       }
-    }
-    if (BeaconContentType.isImage(contentType)) {
+    } else if (contentType.contains(BeaconContentType.applicationFormUrlEncoded.header)) {
+      Map<String, String> formData = {};
+      if (body is String) {
+        formData = Uri.splitQueryString(body);
+      } else if (body is Map) {
+        // Assuming
+        formData = (body as Map<String, dynamic>).map((key, value) => MapEntry(key.toString(), value.toString()));
+      }
+
+      if (formData.isEmpty) {
+        return Text(
+          'Empty Form Data',
+          style: textStyle,
+        );
+      }
+
+      return JsonDescribeWidget(json: formData as Map<String, dynamic>);
+    } else if (BeaconContentType.isImage(contentType)) {
       if (body is Uint8List) {
         return Image.memory(body as Uint8List);
       } else {
@@ -138,8 +154,23 @@ class BodyDisplayWidget extends StatelessWidget {
       }
     }
 
+    // Fallback for other unsupported types or raw string display
+    if (body is String) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Raw Body (Content-Type: $contentType)',
+            style: textStyle,
+          ),
+          const SizedBox(height: 5),
+          SelectableText(body),
+        ],
+      );
+    }
+
     return Text(
-      'Unsupported content type\n$contentType',
+      'Unsupported content type or body format\nContent-Type: $contentType\nBody Type: ${body.runtimeType}',
       style: textStyle,
     );
   }

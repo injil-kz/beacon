@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:injil_beacon/src/data/services/curl_service.dart';
 import 'package:injil_beacon/src/domain/models/http_message.dart';
 
 /// Represents an HTTP request.
@@ -62,24 +63,6 @@ class BeaconHttpRequest extends BeaconHttpMessage {
 
   /// Converts the HTTP request to a cURL command string.
   ///
-  /// This getter method generates a cURL command that can be used to
-  /// replicate the HTTP request in a terminal. It includes the URL,
-  /// headers, and body of the request.
-  ///
   /// Returns a [String] representing the cURL command.
-  String get cURL {
-    final headersString = headers?.entries.map((e) => '-H "${e.key}: ${e.value}"').join(' ') ?? '';
-    final bodyString = body != null
-        ? body is String
-            ? '-d "$body"'
-            : '-d ${jsonEncode(body)}'
-        : '';
-    return 'curl -X $_requestInCurl $headersString $bodyString $_pathWithQueryParameters';
-  }
-
-  String get _requestInCurl => method.name;
-
-  String get _pathWithQueryParameters => '$path${_queryInRaw.isNotEmpty ? '?$_queryInRaw' : ''}';
-
-  String get _queryInRaw => query?.entries.map((e) => '${e.key}=${e.value}').join('&') ?? '';
+  String get cURL => CurlService.cURLFormat(this);
 }
