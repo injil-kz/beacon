@@ -8,12 +8,15 @@ class DefaultBeaconConfiguration extends BeaconConfiguration {
   factory DefaultBeaconConfiguration() {
     return _instance;
   }
+
   DefaultBeaconConfiguration._privateConstructor({
     required this.repo,
   });
 
+  static bool logRequests = true;
+
   static final DefaultBeaconConfiguration _instance = DefaultBeaconConfiguration._privateConstructor(
-    repo: InMemoryBeaconRepository(),
+    repo: InMemoryBeaconRepository(logRequests: logRequests),
   );
 
   /// A repository that provides access to beacon-related data and operations.

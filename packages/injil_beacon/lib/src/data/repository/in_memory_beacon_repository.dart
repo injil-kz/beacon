@@ -11,9 +11,10 @@ import 'package:injil_beacon/src/domain/repository/beacon_repository.dart';
 
 /// An in-memory implementation of the `BeaconRepository` interface.
 class InMemoryBeaconRepository implements BeaconRepository {
-  InMemoryBeaconRepository() : _streamController = StreamController<List<BeaconHttpCall>>.broadcast() {
+  InMemoryBeaconRepository({required this.logRequests}) : _streamController = StreamController<List<BeaconHttpCall>>.broadcast() {
     if (kDebugMode) ansiColorDisabled = false;
   }
+  final bool logRequests;
   final List<BeaconHttpCall> _calls = [];
   final StreamController<List<BeaconHttpCall>> _streamController;
 
@@ -30,7 +31,7 @@ class InMemoryBeaconRepository implements BeaconRepository {
 
   @override
   Future<void> saveError(BeaconHttpError error) async {
-    await Future.microtask(() => LogsPrintingService.logError(error));
+    if (logRequests) await Future.microtask(() => LogsPrintingService.logError(error));
     final xRequestCallId = error.xRequestId;
     if (xRequestCallId == null) {
       throw ArgumentError('Error must have a x-request-id header');
@@ -49,7 +50,7 @@ class InMemoryBeaconRepository implements BeaconRepository {
 
   @override
   Future<void> saveRequest(BeaconHttpRequest request) async {
-    await Future.microtask(() => LogsPrintingService.logRequest(request));
+    if (logRequests) await Future.microtask(() => LogsPrintingService.logRequest(request));
     final xRequestCallId = request.xRequestId;
     if (xRequestCallId == null) {
       throw ArgumentError('Request must have a x-request-id header');
@@ -68,7 +69,7 @@ class InMemoryBeaconRepository implements BeaconRepository {
 
   @override
   Future<void> saveResponse(BeaconHttpResponse response) async {
-    await Future.microtask(() => LogsPrintingService.logResponse(response));
+    if (logRequests) await Future.microtask(() => LogsPrintingService.logResponse(response));
     final xRequestCallId = response.xRequestId;
     if (xRequestCallId == null) {
       throw ArgumentError('Response must have a x-request-id header');
