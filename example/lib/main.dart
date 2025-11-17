@@ -4,6 +4,7 @@ import 'package:example/service/navigation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  DefaultBeaconConfiguration.logRequests = false;
   final configuration = DefaultBeaconConfiguration();
   final router = AppRouter();
 
