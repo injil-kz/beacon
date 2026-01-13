@@ -11,9 +11,13 @@ dependencies:
   flutter:
     sdk: flutter
   auto_route: ^9.2.2
-  injil_beacon: ^1.0.15
-  beacon_dio_adapter: ^1.0.9
-  beacon_mobile_inspector: ^1.0.8
+  injil_beacon:
+  beacon_dio_adapter:
+  beacon_mobile_inspector:
+  beacon_graphql_adapter:
+    path: ../packages/beacon_graphql_adapter
+  graphql: ^5.1.0
+  beacon_supabase_adapter:
   dio: ^5.7.0
 
 dev_dependencies:

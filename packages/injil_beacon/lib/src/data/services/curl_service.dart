@@ -6,12 +6,23 @@ class CurlService {
   static String cURLFormat(BeaconHttpRequest request) {
     final effectiveHeaders = {...?request.headers};
     String bodyString = '';
-    String? contentType = effectiveHeaders.entries
-        .firstWhere((entry) => entry.key.toLowerCase() == 'content-type', orElse: () => const MapEntry('', ''))
+
+    var contentType = BeaconContentType.other;
+    final contentTypeValue = effectiveHeaders.entries
+        .firstWhere(
+          (entry) => entry.key.toLowerCase() == 'content-type',
+          orElse: () => const MapEntry('', ''),
+        )
         .value;
 
+    if (contentTypeValue is String) {
+      contentType = BeaconContentType.fromHeader(contentTypeValue);
+    } else if (contentTypeValue is List && contentTypeValue.isNotEmpty) {
+      contentType = BeaconContentType.fromHeader(contentTypeValue.first.toString());
+    }
+
     if (request.body != null) {
-      if (contentType == 'application/x-www-form-urlencoded') {
+      if (contentType.isFormUrlEncoded) {
         if (request.body is Map<String, dynamic>) {
           final formData = (request.body as Map<String, dynamic>)
               .entries
@@ -24,7 +35,7 @@ class CurlService {
           bodyString = "-d '${request.body.toString()}'";
         }
         // Ensure the Content-Type header is explicitly set
-        effectiveHeaders['Content-Type'] = 'application/x-www-form-urlencoded';
+        effectiveHeaders['Content-Type'] = BeaconContentType.applicationFormUrlEncoded.header;
       } else if (request.body is String) {
         // Escape double quotes within the string body if necessary.
         // Enclose the string body in double quotes.
@@ -39,13 +50,23 @@ class CurlService {
 
         // Automatically add Content-Type header if body is present and header is missing or not form-urlencoded
         if (!effectiveHeaders.keys.any((k) => k.toLowerCase() == 'content-type')) {
-          effectiveHeaders['Content-Type'] = 'application/json';
+          effectiveHeaders['Content-Type'] = BeaconContentType.applicationJson.header;
         }
       }
     }
 
     // Use single quotes for header values to handle potential special characters
-    final headersString = effectiveHeaders.entries.map((e) => "-H '${e.key}: ${e.value}'").join(' ');
+    final headersList = <String>[];
+    effectiveHeaders.forEach((key, value) {
+      if (value is List) {
+        for (final v in value) {
+          headersList.add("-H '$key: $v'");
+        }
+      } else {
+        headersList.add("-H '$key: $value'");
+      }
+    });
+    final headersString = headersList.join(' ');
 
     final pathWithQuery = _pathWithQueryParameters(request);
     final methodString = _requestInCurl(request);
@@ -74,6 +95,8 @@ class CurlService {
   }
 
   static String _queryInRaw(BeaconHttpRequest request) =>
-      request.query?.entries.map((e) => '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value.toString())}').join('&') ??
+      request.query?.entries
+          .map((e) => '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value.toString())}')
+          .join('&') ??
       '';
 }

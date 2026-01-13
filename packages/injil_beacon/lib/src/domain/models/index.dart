@@ -1,3 +1,4 @@
+export 'content_type.dart';
 export 'http_call.dart';
 export 'http_message.dart';
 export 'impl/http_error.dart';

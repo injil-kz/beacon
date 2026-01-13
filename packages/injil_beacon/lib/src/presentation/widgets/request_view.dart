@@ -220,7 +220,17 @@ class RequestView extends StatelessWidget {
                         const SizedBox(height: 10),
                         BodyDisplayWidget(
                           body: httpCall.request.body,
-                          contentType: httpCall.request.headers?['content-type'] as String? ?? 'application/json',
+                          contentType: () {
+                            final contentType = httpCall.request.headers?['content-type'];
+                            if (contentType is String) {
+                              return BeaconContentType.fromHeader(contentType);
+                            } else if (contentType is List && contentType.isNotEmpty) {
+                              return BeaconContentType.fromHeader(
+                                contentType.first?.toString() ?? '',
+                              );
+                            }
+                            return BeaconContentType.applicationJson;
+                          }(),
                         ),
                       ],
                     ),

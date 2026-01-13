@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs
 
+import 'package:injil_beacon/src/domain/models/content_type.dart';
 import 'package:injil_beacon/src/presentation/widgets/body_display_widget.dart';
 import 'package:injil_beacon/src/presentation/widgets/injil_theme_wrapper.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,7 +13,7 @@ class SeeFullBodyScreen extends StatelessWidget {
     this.body,
   });
   final dynamic body;
-  final String contentType;
+  final BeaconContentType contentType;
 
   @override
   Widget build(BuildContext context) {

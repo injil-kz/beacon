@@ -179,7 +179,19 @@ class ResponseView extends StatelessWidget {
                               const SizedBox(height: 10),
                               BodyDisplayWidget(
                                 body: httpCall.response!.body,
-                                contentType: (httpCall.response!.headers?['content-type'] as List<String?>)[0] ?? '',
+                                contentType: () {
+                                  final contentType = httpCall.response!.headers?['content-type'];
+                                  if (contentType is String) {
+                                    return BeaconContentType.fromHeader(
+                                      contentType,
+                                    );
+                                  } else if (contentType is List && contentType.isNotEmpty) {
+                                    return BeaconContentType.fromHeader(
+                                      contentType.first?.toString() ?? '',
+                                    );
+                                  }
+                                  return BeaconContentType.other;
+                                }(),
                               ),
                               const SizedBox(height: 15),
                               Text(

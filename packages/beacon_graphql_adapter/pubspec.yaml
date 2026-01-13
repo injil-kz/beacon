@@ -1,0 +1,18 @@
+name: beacon_graphql_adapter
+description: "A new Flutter package project."
+version: 0.0.1
+homepage: https://injil.kz
+
+environment:
+  sdk: ^3.6.0
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  injil_beacon: null
+  graphql: ^5.2.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

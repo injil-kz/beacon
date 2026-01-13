@@ -16,7 +16,7 @@ class BodyDisplayWidget extends StatelessWidget {
     this.allowFullDisplay = false,
   });
   final dynamic body;
-  final String contentType;
+  final BeaconContentType contentType;
   final bool allowFullDisplay;
 
   @override
@@ -31,7 +31,7 @@ class BodyDisplayWidget extends StatelessWidget {
       );
     }
 
-    if (contentType.contains(BeaconContentType.applicationJson.header)) {
+    if (contentType.isJson) {
       if (body is Map) {
         if ((body as Map).isEmpty) {
           return Text(
@@ -126,7 +126,7 @@ class BodyDisplayWidget extends StatelessWidget {
           ),
         );
       }
-    } else if (contentType.contains(BeaconContentType.applicationFormUrlEncoded.header)) {
+    } else if (contentType.isFormUrlEncoded) {
       Map<String, String> formData = {};
       if (body is String) {
         formData = Uri.splitQueryString(body);
@@ -143,12 +143,12 @@ class BodyDisplayWidget extends StatelessWidget {
       }
 
       return JsonDescribeWidget(json: formData as Map<String, dynamic>);
-    } else if (BeaconContentType.isImage(contentType)) {
+    } else if (contentType.isImage) {
       if (body is Uint8List) {
         return Image.memory(body as Uint8List);
       } else {
         return Text(
-          'Unsupported Image Type\nContent-Type: $contentType\nData-Type: ${body.runtimeType}',
+          'Unsupported Image Type\nContent-Type: ${contentType.header}\nData-Type: ${body.runtimeType}',
           style: textStyle,
         );
       }
@@ -160,7 +160,7 @@ class BodyDisplayWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Raw Body (Content-Type: $contentType)',
+            'Raw Body (Content-Type: ${contentType.header})',
             style: textStyle,
           ),
           const SizedBox(height: 5),
@@ -170,7 +170,7 @@ class BodyDisplayWidget extends StatelessWidget {
     }
 
     return Text(
-      'Unsupported content type or body format\nContent-Type: $contentType\nBody Type: ${body.runtimeType}',
+      'Unsupported content type or body format\nContent-Type: ${contentType.header}\nBody Type: ${body.runtimeType}',
       style: textStyle,
     );
   }

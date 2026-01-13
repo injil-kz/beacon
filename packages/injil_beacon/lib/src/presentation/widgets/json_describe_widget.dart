@@ -31,6 +31,17 @@ class JsonDescribeWidget extends StatelessWidget {
             separatorBuilder: (context, index) => const SizedBox(height: 5),
             itemBuilder: (context, index) {
               final header = json.entries.elementAt(index);
+              final value = header.value;
+              String displayValue;
+              if (value is Map || value is List) {
+                try {
+                  displayValue = const JsonEncoder.withIndent('  ').convert(value);
+                } catch (_) {
+                  displayValue = value.toString();
+                }
+              } else {
+                displayValue = value.toString();
+              }
               return Text.rich(
                 TextSpan(
                   children: [
@@ -43,15 +54,14 @@ class JsonDescribeWidget extends StatelessWidget {
                       style: textStyle,
                     ),
                     TextSpan(
-                      text: header.value.toString(),
+                      text: displayValue,
                       style: textStyle?.copyWith(
                         color: Colors.grey[400],
+                        fontFamily: 'Courier',
                       ),
                     ),
                   ],
                 ),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
               );
             },
           ),

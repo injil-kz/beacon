@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:injil_beacon/injil_beacon.dart';
+import 'package:example/service/graphql_service.dart';
 import 'package:example/service/rest_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,13 @@ class HomeScreen extends StatelessWidget {
                 RestService().simulateHttpCalls();
               },
               child: const Text('Simulate HTTP Calls'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                GraphqlService().simulateGraphqlCalls();
+              },
+              child: const Text('Simulate GraphQL Calls'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(

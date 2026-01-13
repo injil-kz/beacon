@@ -11,7 +11,8 @@ import 'package:injil_beacon/src/domain/repository/beacon_repository.dart';
 
 /// An in-memory implementation of the `BeaconRepository` interface.
 class InMemoryBeaconRepository implements BeaconRepository {
-  InMemoryBeaconRepository({required this.logRequests}) : _streamController = StreamController<List<BeaconHttpCall>>.broadcast() {
+  InMemoryBeaconRepository({required this.logRequests})
+      : _streamController = StreamController<List<BeaconHttpCall>>.broadcast() {
     if (kDebugMode) ansiColorDisabled = false;
   }
   final bool logRequests;

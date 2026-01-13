@@ -8,7 +8,10 @@ class RestService {
   Future<void> simulateHttpCalls() async {
     _dio = null;
     _dio = Dio(
-      BaseOptions(connectTimeout: Duration(seconds: 5), receiveTimeout: Duration(seconds: 5), sendTimeout: Duration(seconds: 5)),
+      BaseOptions(
+          connectTimeout: Duration(seconds: 5),
+          receiveTimeout: Duration(seconds: 5),
+          sendTimeout: Duration(seconds: 5)),
     );
     _dio?.interceptors.add(BeaconDioAdapter(beaconConfiguration: DefaultBeaconConfiguration()));
 
@@ -48,7 +51,8 @@ class RestService {
     await Future.delayed(Duration(seconds: 3));
 
     try {
-      await _dio!.post('https://jsonplaceholder.typicode.com/posts', data: {'title': 'foo', 'body': 'bar', 'userId': 1});
+      await _dio!
+          .post('https://jsonplaceholder.typicode.com/posts', data: {'title': 'foo', 'body': 'bar', 'userId': 1});
       print('POST Post successful');
     } catch (e) {
       print('Error during POST https://jsonplaceholder.typicode.com/posts: $e');

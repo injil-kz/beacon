@@ -22,13 +22,26 @@ enum BeaconContentType {
   imageTga('image/tga'),
   imagePsd('image/psd'),
   imageHeif('image/heif'),
-  imageAvif('image/avif');
+  imageAvif('image/avif'),
+  other('other');
 
   const BeaconContentType(this.header);
 
   final String header;
 
-  static bool isImage(String contentType) {
-    return contentType.contains('image/');
+  static BeaconContentType fromHeader(String contentType) {
+    if (contentType.isEmpty) return BeaconContentType.other;
+    final normalized = contentType.toLowerCase();
+    try {
+      return BeaconContentType.values.firstWhere(
+        (e) => e != BeaconContentType.other && normalized.contains(e.header),
+      );
+    } catch (_) {
+      return BeaconContentType.other;
+    }
   }
+
+  bool get isImage => header.startsWith('image/');
+  bool get isJson => header.contains('application/json');
+  bool get isFormUrlEncoded => header.contains('application/x-www-form-urlencoded');
 }

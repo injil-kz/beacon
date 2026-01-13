@@ -5,9 +5,12 @@ environment:
 
 dependencies: 
   injil_beacon: ^1.0.15
+  gql: ^1.0.1
    
 workspace:
   - packages/injil_beacon
   - packages/beacon_dio_adapter
   - packages/beacon_mobile_inspector
+  - packages/beacon_graphql_adapter
+  - packages/beacon_supabase_adapter
   - example
