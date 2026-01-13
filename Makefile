@@ -17,6 +17,8 @@ release:
 	cd packages/injil_beacon && flutter pub publish -f
 	cd packages/beacon_dio_adapter && flutter pub publish -f
 	cd packages/beacon_mobile_inspector && flutter pub publish -f
+	cd packages/beacon_graphql_adapter && flutter pub publish -f
+	cd packages/beacon_supabase_adapter && flutter pub publish -f
 
 get:
 	dart pub get
