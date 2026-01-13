@@ -1,3 +1,7 @@
+# 1.0.8
+
+- Version bump
+
 # 1.0.7
 
 - Added HTTP log output

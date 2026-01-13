@@ -9,9 +9,9 @@
     },
     {
       "name": "_macros",
-      "rootUri": "file:///Users/yerassylmaikhanov/fvm/versions/3.29.2/bin/cache/dart-sdk/pkg/_macros",
+      "rootUri": "file:///Users/yerassylmaikhanov/Documents/development/flutter/bin/cache/dart-sdk/pkg/_macros",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.5"
     },
     {
       "name": "analyzer",
@@ -33,7 +33,7 @@
     },
     {
       "name": "async",
-      "rootUri": "file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/async-2.12.0",
+      "rootUri": "file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/async-2.13.0",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -165,7 +165,7 @@
     },
     {
       "name": "fake_async",
-      "rootUri": "file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/fake_async-1.3.2",
+      "rootUri": "file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/fake_async-1.3.3",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -183,19 +183,19 @@
     },
     {
       "name": "flutter",
-      "rootUri": "file:///Users/yerassylmaikhanov/fvm/versions/3.29.2/packages/flutter",
+      "rootUri": "file:///Users/yerassylmaikhanov/Documents/development/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
     {
       "name": "flutter_test",
-      "rootUri": "file:///Users/yerassylmaikhanov/fvm/versions/3.29.2/packages/flutter_test",
+      "rootUri": "file:///Users/yerassylmaikhanov/Documents/development/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
     {
       "name": "flutter_web_plugins",
-      "rootUri": "file:///Users/yerassylmaikhanov/fvm/versions/3.29.2/packages/flutter_web_plugins",
+      "rootUri": "file:///Users/yerassylmaikhanov/Documents/development/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
@@ -249,7 +249,7 @@
     },
     {
       "name": "leak_tracker",
-      "rootUri": "file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/leak_tracker-10.0.8",
+      "rootUri": "file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/leak_tracker-10.0.9",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -369,7 +369,7 @@
     },
     {
       "name": "sky_engine",
-      "rootUri": "file:///Users/yerassylmaikhanov/fvm/versions/3.29.2/bin/cache/pkg/sky_engine",
+      "rootUri": "file:///Users/yerassylmaikhanov/Documents/development/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
@@ -441,7 +441,7 @@
     },
     {
       "name": "vm_service",
-      "rootUri": "file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/vm_service-14.3.1",
+      "rootUri": "file:///Users/yerassylmaikhanov/.pub-cache/hosted/pub.dev/vm_service-15.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -512,10 +512,9 @@
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-04-25T09:51:16.542279Z",
   "generator": "pub",
-  "generatorVersion": "3.7.2",
-  "flutterRoot": "file:///Users/yerassylmaikhanov/fvm/versions/3.29.2",
-  "flutterVersion": "3.29.2",
+  "generatorVersion": "3.8.1",
+  "flutterRoot": "file:///Users/yerassylmaikhanov/Documents/development/flutter",
+  "flutterVersion": "3.32.8",
   "pubCache": "file:///Users/yerassylmaikhanov/.pub-cache"
 }
