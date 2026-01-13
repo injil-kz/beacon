@@ -1,5 +1,5 @@
 name: beacon_graphql_adapter
-description: "A new Flutter package project."
+description: GraphQL Adapter for Beacon HTTP Logger.
 version: 1.0.18
 homepage: https://injil.kz
 
@@ -10,8 +10,9 @@ resolution: workspace
 dependencies:
   flutter:
     sdk: flutter
-  injil_beacon: null
+  gql: ^1.0.1
   graphql: ^5.2.3
+  injil_beacon: ^1.0.18
 
 dev_dependencies:
   flutter_test:

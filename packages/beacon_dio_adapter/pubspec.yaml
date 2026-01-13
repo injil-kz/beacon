@@ -1,5 +1,5 @@
 name: beacon_dio_adapter
-description: "Dio Adapter for Beacon"
+description: Dio Adapter for Beacon HTTP Logger.
 version: 1.0.18
 homepage: https://injil.kz
 
