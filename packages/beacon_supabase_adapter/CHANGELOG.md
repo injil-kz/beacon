@@ -1,3 +1,7 @@
+# 1.0.19
+
+- Updated Readme
+
 # 1.0.18
 
 - Initial release

@@ -1,6 +1,6 @@
 name: beacon_dio_adapter
 description: Dio Adapter for Beacon HTTP Logger.
-version: 1.0.18
+version: 1.0.19
 homepage: https://injil.kz
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
   dio: ^5.8.0+1
   flutter:
     sdk: flutter
-  injil_beacon: 
+  injil_beacon: ^1.0.19
 
 dev_dependencies:
   flutter_test:

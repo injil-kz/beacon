@@ -20,7 +20,7 @@
     },
     {
       "name": "injil_beacon",
-      "version": "1.0.18",
+      "version": "1.0.19",
       "dependencies": [
         "ansicolor",
         "flutter"
@@ -31,7 +31,7 @@
     },
     {
       "name": "beacon_dio_adapter",
-      "version": "1.0.18",
+      "version": "1.0.19",
       "dependencies": [
         "dio",
         "flutter",
@@ -43,7 +43,7 @@
     },
     {
       "name": "beacon_mobile_inspector",
-      "version": "1.0.18",
+      "version": "1.0.19",
       "dependencies": [
         "flutter",
         "injil_beacon",
@@ -55,7 +55,7 @@
     },
     {
       "name": "beacon_graphql_adapter",
-      "version": "1.0.18",
+      "version": "1.0.19",
       "dependencies": [
         "flutter",
         "gql",
@@ -68,7 +68,7 @@
     },
     {
       "name": "beacon_supabase_adapter",
-      "version": "1.0.18",
+      "version": "1.0.19",
       "dependencies": [
         "flutter",
         "http",

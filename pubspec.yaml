@@ -4,7 +4,7 @@ environment:
   sdk: ^3.6.0
 
 dependencies: 
-  injil_beacon: ^1.0.15
+  injil_beacon: ^1.0.19
   gql: ^1.0.1
    
 workspace:

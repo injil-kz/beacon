@@ -1,6 +1,6 @@
 name: beacon_supabase_adapter
 description: Supabase Adapter for Beacon HTTP Logger.
-version: 1.0.18
+version: 1.0.19
 homepage: https://injil.kz
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^1.2.0
-  injil_beacon: ^1.0.18
+  injil_beacon: ^1.0.19
   supabase_flutter: ^2.12.0
 
 dev_dependencies:

@@ -1,6 +1,6 @@
 name: beacon_mobile_inspector
 description: Mobile Inspector for Beacon HTTP Logger.
-version: 1.0.18
+version: 1.0.19
 homepage: https://injil.kz
 
 environment:
@@ -12,7 +12,7 @@ resolution: workspace
 dependencies:
   flutter:
     sdk: flutter
-  injil_beacon: ^1.0.18
+  injil_beacon: ^1.0.19
   sensors_plus: ^6.1.1
 
 dev_dependencies:
